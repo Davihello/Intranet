@@ -1,0 +1,287 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Define o contêiner principal para usar Flexbox */
+.container-principal {
+    display: flex; 
+    height: 100vh;
+    width: 100%; 
+}
+
+/* Estilos para a coluna fixa  */
+.coluna-fixa {
+    width: 50%; 
+    background-color: #3a91dc; 
+    padding: 20px; 
+    box-sizing: border-box; 
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+
+/* Estilo dos contêiners */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* barra fixa da esquerda */
+body {
+  background-color: #3a91dc; 
+  color: white;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  align-items: center;
+  text-align: center;
+}
+
+/* cabeçalho da esquerda */
+header {
+  width: 100%;
+  padding: 15px;
+  display: flex;
+  justify-content: center;
+}
+
+/* Estilo Logo cabeçalho*/
+
+.logo-area {
+  width: 90%;
+  max-width: 900px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+/* Logo do cabeçalho */
+
+.logo {
+  height: 80px;
+}
+
+.dev-button {
+  background-color: #d9f0ff;
+  color: #000;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: 0.2s;
+}
+
+.dev-button:hover{
+  transform: translateY(-2px);
+  background-color: #D2FD9C;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+
+/* Titulo principal */
+
+.welcome h1 {
+  font-size: 2.0em;
+  margin-top: 30px;
+  line-height: 1.4;
+}
+.welcome p {
+  color: #d9f0ff;
+  font-weight: 300;
+  margin-top: 10px;
+  font-size: 1rem;
+}
+
+/* Estilo dos Atalhos barra fixa */
+
+.atalhos {
+  margin-top: 50px;
+  text-decoration: none;
+}
+
+section a { 
+    text-decoration: none;
+}
+
+.atalhos h3 {
+  color: #D2FD9C;
+  font-size: 1.5rem;
+  margin-bottom: 25px;
+}
+
+/* Cards do atalho */
+
+.cards {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  
+}
+
+/* Cards do atalho */
+
+.card {
+    
+  background-color: #d9f0ff;
+  color: #222;
+  width: 150px;
+  height: 101px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+.icon {
+ 
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+footer {
+  margin-top: auto;
+  padding: 30px 0;
+}
+
+/* Sessão dos subsmenus */
+
+.menu a {
+  color: #D2FD9C;
+  text-decoration: none;
+  margin: 0 15px;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.menu a:hover {
+  color: #fff;
+}
+
+
+/* Estilos para a coluna com rolagem  */
+
+.coluna-rolavel {
+    width: 82%; 
+    overflow-y: auto; 
+    margin: 0;
+    background-color: white;
+    color: #000;
+}
+
+/* Estilos de barra de busca   */
+
+.search-box {
+  width: 100%;
+  max-width: 400px;
+  margin-bottom: 20px;
+  margin: 0px 50px 0px 50px;
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 10px 15px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  outline: none;
+  transition: 0.3s;
+}
+
+input[type="text"]:focus {
+  border-color: #009879;
+  box-shadow: 0 0 6px rgba(0, 152, 121, 0.3);
+}
+
+/* Estilo da tabela   */
+
+.table-container {
+  width: 85%;
+  overflow-x: none;
+  padding: 50px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 600px;
+}
+
+th, td {
+  padding: 12px 15px;
+  border-bottom: 1px solid #ddd;
+  text-align: left;
+}
+
+th {
+  background-color: #3a91dc;
+  color: white;
+}
+
+tr:nth-child(even) {
+  background-color: #f3f3f3;
+}
+
+tr:hover {
+  background-color: #a0c2df;
+}
+
+
+/* Sessão Ramal e Email  */
+.ramal-email{
+  height: 250px;
+  padding: 20px;
+}
+
+.logos-ramal-email{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: 15px;
+}
+
+
+.logos-ramal-email-bg{
+    padding: auto;
+    background-color: #d9f0ff;
+    border-radius: 20px;
+    padding: 10px;
+    transition: 0.2s;
+}
+.logos-ramal-email-bg:hover{
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+
+/* Footer  */
+.final {
+  display: flex;
+  flex-direction: row;
+  margin-top: 50px;
+  height: 200px;
+  background-color: #EDEDED;
+  padding: 50px;
+}
+
+.final img {
+  margin-left: 15px;
+}
+
+.final h3 {
+  margin-top: 50px;
+}

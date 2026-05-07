@@ -1,0 +1,503 @@
+html {
+  scroll-behavior: smooth;
+  
+}
+
+body, html {
+
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+
+}
+
+
+
+/* Define o contêiner principal para usar Flexbox */
+
+.container-principal {
+    display: flex; 
+    height: 100vh; /* Trava a altura na altura da tela */
+    width: 100%; 
+    overflow: hidden; /* Impede que a página inteira role */  
+   background-color: #EDEDED;
+  
+}
+
+/* Estilos para a coluna fixa  */
+.coluna-fixa {
+    width:40%; 
+    background-color: #3a91dc; 
+    padding: 20px; 
+    box-sizing: border-box; 
+    height: 150vh;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+
+/* Estilo dos contêiners */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+  
+   
+}
+
+/* barra fixa da esquerda */
+body {
+  background-color: #3a91dc; 
+  color: white;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  align-items: center;
+  text-align: center;
+
+}
+
+/* cabeçalho da esquerda */
+header {
+  width: 100%;
+  padding: 15px;
+  display: flex;
+  justify-content: center;
+}
+
+/* Estilo Logo cabeçalho*/
+
+.logo-area {
+  width: 90%;
+  max-width: 900px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  
+}
+.logo-area img {
+  border-radius: 10px;
+}
+
+
+
+/* Logo do cabeçalho */
+
+.logo {
+  height: 80px;
+}
+
+
+.dev-button {
+  background-color: #d9f0ff;
+  color: #000;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: 0.2s;
+}
+
+.dev-button:hover{
+  transform: translateY(-2px);
+  background-color: #D2FD9C;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+
+/* Titulo principal */
+
+.welcome h1 {
+  font-size: 2.0em;
+  margin-top: 30px;
+  line-height: 1.4;
+}
+.welcome p {
+  color: #d9f0ff;
+  font-weight: 30;
+  margin-top: 10px;
+  font-size: 1,5rem;
+}
+
+/* Estilo dos Atalhos barra fixa */
+
+.atalhos {
+  margin-top: 50px;
+  text-decoration: none;
+}
+
+section a { 
+    text-decoration: none;
+}
+
+.atalhos h3 {
+  color: #D2FD9C;
+  font-size: 1.5rem;
+  margin-bottom: 25px;
+}
+/* =============== Container do menu do rodapé================= */
+
+/* rodapé da esquerda */
+footer .menu {
+    display: flex;
+    flex-wrap: wrap;      /* Permite que os links quebrem linha se o espaço acabar */
+    justify-content: center;
+    gap: 10px;            /* Espaço entre os botões */
+    padding: 20px 10px;
+    margin-top: 20px;
+}
+
+/* Os links individuais */
+footer .menu a {
+    background-color: #d9f0ff; /* Azul claro para combinar com os cards */
+    color: #333;
+    text-decoration: none;
+    padding: 8px 15px;
+    border-radius: 20px;    /* Bordas arredondadas modernas */
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+}
+
+/* Efeito ao passar o mouse */
+footer .menu a:hover {
+    background-color: #D2FD9C; /* Verde destaque que você já usa */
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    color: #000;
+}
+
+
+
+
+
+/* ======Estilo da logo principal======= */
+
+.img-logo{
+  align-items: center;
+  width: 400px;
+  display: flexbox;
+  margin-top: 30px;
+  border-radius: 20%;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+
+}
+
+@media (max-width: 600px) {
+  .img-logo {
+    height: 250px;
+  }
+  .atalhos {
+    font-size: 1.8rem;
+    padding: 6px;
+  }
+}
+
+/* Cards do atalho */
+
+.cards {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  
+}
+
+/* Cards do atalho */
+
+.card {
+    
+  background-color: #d9f0ff;
+  color: #222;
+  width: 150px;
+  height: 101px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  background-color: #D2FD9C;
+  transform: translateY(-15px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+.icon {
+  
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+
+/* Estilos das Logos - Atalhos */
+
+.img-telefone{
+  display: flex;
+  width: 45px;
+}
+
+
+/* ======= Sessão dos subsmenus =========*/
+
+.menu a {
+  color: #000000;
+  background-color: #d9f0ff;
+  border-radius: 5px;
+  padding:5px 10px;
+  text-decoration: none;
+  margin: 0 15px;
+  font-weight: 500;
+  transition: 0.2s;
+}
+
+.menu a:hover {
+  background-color: #D2FD9C;
+  transform: translateY(-15px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+
+/* ====== Estilos para a coluna com rolagem =======*/
+
+.coluna-rolavel {
+     width: 65%; 
+    overflow-y: auto; 
+    background-color: white;
+    overflow-y: scroll;
+    color: #000;
+    height: 100%;
+    overscroll-behavior-y: contain; /* Impede que a rolagem afete o elemento pai */
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #111;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.carousel {
+  position: relative;
+  width: 90%;
+  max-width: 1080px;
+  height: 600px;
+  overflow: hidden;
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  margin: 50px auto;
+}
+
+.carousel-track {
+  display: flex;
+  transition: transform 0.8s ease;
+  height: 100%;
+}
+
+.slide {
+  min-width: 100%;
+  height: 100%;
+  transition: opacity 1s ease;
+  object-fit: cover;
+}
+
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background-color: transparent;
+}
+
+/* ======= SETAS ======= */
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 2.5rem;
+  color: rgba(255, 255, 255, 0.283);
+  background: rgba(255, 255, 255, 0.034);
+  border: none;
+  border-radius: 80px;
+  padding: 10px;
+  cursor: pointer;
+  z-index: 10;
+  transition: background 0.3s;
+}
+
+.arrow:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.left {
+  left: 15px;
+}
+.right {
+  right: 15px;
+}
+
+/* ======= INDICADORES ======= */
+.dots {
+  position: absolute;
+  bottom: 15px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.dot.active {
+  background: white;
+}
+
+/* ======= RESPONSIVO ======= */
+@media (max-width: 600px) {
+  .carousel {
+    height: 250px;
+  }
+  .arrow {
+    font-size: 1.8rem;
+    padding: 6px;
+  }
+}
+
+
+
+/* Sessão bg cerebro */
+
+
+
+.IEC {
+    height: 650px;
+}
+.img-cerebro{
+    border-radius: 15px;
+    margin: 20px 0px 100px;
+}
+
+.icones-cerebro{
+    margin: 20px 35px;
+    padding: 5px;
+    cursor: pointer;
+    transition: 0.2s;
+    border-radius: 15px;
+}
+.icones-cerebro img:hover{
+    transform: translateY(-5px);
+    background-color: #00000000;
+    box-shadow: 0 4px 22px rgba(255, 255, 255, 0.575);
+}
+
+/* Sessão logos e acessos mv  */
+.acessos{
+  height: 550px;
+  padding-top: 50px;
+}
+.acessos-paragrafo {
+    margin-bottom: 25px;
+}
+
+.logos-cerebro{
+   display: flex;
+    flex-wrap: wrap;      /* Permite que os ícones quebrem linha */
+    justify-content: center; /* Centraliza TUDO horizontalmente */
+    gap: 30px;            /* Espaçamento entre os ícones */
+    max-width: 800px;     /* Ajuste conforme a largura da sua coluna */
+    margin: 0 auto;       /* Centraliza o bloco na página */
+}
+
+.logos-cerebro-bg{
+    padding: auto;
+    background-color: #d9f0ff;
+    border-radius: 20px;
+    margin: 15px 25px;
+    transition: 0.2s;
+}
+.logos-cerebro-bg:hover{
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+/* Sessão NEP  */
+
+.nep {
+  margin: 55px;
+  padding-top: 50px;
+  height: 550px;
+}
+
+.nep img {
+  margin: 15px;
+  border-radius: 15px;
+  transition: 0.2s;
+}
+
+.nep img:hover{
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+/* Sessão Ramal e Email  */
+.ramal-email{
+  height: 350px;
+}
+
+.logos-ramal-email{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: 25px;
+}
+
+.logos-ramal-email-bg{
+    background-color: #d9f0ff;
+    border-radius: 20px;
+    margin: 5px 10px;
+    padding: 10px;
+    transition: 0.2s;
+}
+.logos-ramal-email-bg:hover{
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+
+/* Footer  */
+.final {
+  display: flex;
+  flex-direction: row;
+  height: 200px;
+  background-color: #EDEDED;
+  padding: 50px;
+}
+
+.final img {
+  margin-left: 15px;
+}
+
+.final h3 {
+  margin-top: 50px;
+  margin-left: 10%;
+}
