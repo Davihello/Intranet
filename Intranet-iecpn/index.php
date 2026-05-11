@@ -13,10 +13,10 @@
 
             <header>
                 <div class="logo-area">
-                  <a href="index.html"><img src="img/logo-iec.png" alt="Logo IECérebro" class="logo"/></a>
+                  <a href="index.php"><img src="img/logo-iec.png" alt="Logo IECérebro" class="logo"/></a>
                   <div>
                     <a href=""><button class="dev-button">RH</button></a>
-                    <a href="db/valida_login.php"><button class="dev-button">Área de DEV</button></a>
+                    <a href="db/login.php"><button class="dev-button">Área de DEV</button></a>
                   </div>
                 </div>
             </header>
@@ -85,33 +85,37 @@
       </div>
 
 
-        <div class="coluna-rolavel">
-            <div class="carousel">
-              <div class="carousel-track">
-                <div class="slide active">
-                  <img src="img/slide/7071c6be6a155f5552bff3066923310f.jpeg" alt="Imagem 1">
-                </div>
-                <div class="slide">
-                  <img src="img/slide/7b0e8c5fb7f908ff4a9d2fd3d95c1de6.jpeg" alt="Imagem 2">
-                </div>
-                <div class="slide">
-                  <img src="img/slide/a4f60608f6aa6fc73081dd06abd7fd9c.jpeg" alt="Imagem 3">
-                </div>
-                <div class="slide">
-                  <img src="img/slide/e393ca15021911f8d6c264bea0099461.jpg" alt="Imagem 4">
-                </div>
-                <div class="slide">
-                  <img src="img/slide/e98f54fa332cfd1421bf7a3e64737d56.jpg" alt="Imagem 5">
-                </div>
-              </div>
+    <div class="coluna-rolavel">
+    <div class="carousel">
+     <div class="carousel-inner">
+        <?php
+        include('db/conexao.php'); // Certifique-se de que o caminho está correto
+        
+        // Busca as imagens do banco
+        $sql_carrossel = "SELECT imagem FROM db_sliders ORDER BY id DESC";
+        $res_carrossel = mysqli_query($conexao, $sql_carrossel);
+        
+        $primeiro = true; // Variável para definir o slide ativo (active)
 
-              <!-- Botões de navegação -->
-              <button class="arrow left">&#10094;</button>
-              <button class="arrow right">&#10095;</button>
-
-              <!-- Indicadores -->
-              <div class="dots"></div>
-            </div>                    
+        if (mysqli_num_rows($res_carrossel) > 0) {
+            while ($reg = mysqli_fetch_assoc($res_carrossel)) {
+                // Define a classe 'active' apenas para a primeira imagem
+                $classe_active = $primeiro ? 'active' : '';
+                
+                echo "
+                <div class='slide {$classe_active}'>
+                    <img src='img/sliders/{$reg['imagem']}' alt='Slider IEC'>
+                </div>";
+                
+                $primeiro = false;
+            }
+        } else {
+            // Imagem padrão caso não tenha nada no banco
+            echo "<div class='slide active'><img src='img/default.jpg'></div>";
+        }
+        ?>
+    </div>
+</div>                   
             </section>
             
 
