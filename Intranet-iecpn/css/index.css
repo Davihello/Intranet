@@ -177,24 +177,35 @@ footer .menu a:hover {
 
 /* ======Estilo da logo principal======= */
 
-.img-logo{
-  align-items: center;
-  width: 400px;
-  display: flexbox;
-  margin-top: 30px;
-  border-radius: 20%;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-
+/* Container que envolve o banner */
+.logo-central {
+    display: flex;                  /* Ativa Flexbox */
+    justify-content: center;        /* Centraliza horizontalmente */
+    align-items: center;            /* Centraliza verticalmente se necessário */
+    width: 70%;                    /* Garante que o container ocupe a largura total */
+    max-width: 1200px;              /* Largura máxima em telas grandes */
+    height: auto;                   /* Altura automática */
+    margin: 20px auto;              /* Margem para separar dos outros elementos */
+    overflow: hidden;               /* Garante que o conteúdo não vaze */
+    border-radius: 20px;            /* Bordas arredondadas (como na imagem) */
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2); /* Sombra para dar profundidade */
 }
 
-@media (max-width: 600px) {
-  .img-logo {
-    height: 250px;
-  }
-  .atalhos {
-    font-size: 1.8rem;
-    padding: 6px;
-  }
+/* Regras para a imagem do banner */
+.img-banner {
+    width: 100%;                    /* A imagem ocupa toda a largura do container */
+    height: auto;                   /* Mantém a proporção da imagem */
+    object-fit: cover;              /* Cobre a área sem distorcer (essencial para responsividade) */
+    display: block;                  /* Remove espaços vazios na base */
+}
+
+/* Consulta de mídia para dispositivos móveis (telas menores que 768px) */
+@media (max-width: 768px) {
+    .logo-central {
+        max-width: 90%;             /* Usa 90% da largura da tela no celular */
+        margin: 10px auto;           /* Menos margem no celular */
+        border-radius: 10px;         /* Bordas um pouco menos arredondadas */
+    }
 }
 
 /* Cards do atalho */
@@ -293,14 +304,15 @@ body {
 }
  /* ==============Sliders============ */
 .carousel {
+    position: relative;
     width: 100%;
-    max-width: 1080px; /* Largura definida */
-    height: 600px;     /* Altura definida */
+    max-width: 1080px; /* Seu ajuste de 1080x600 */
+    height: 600px;
     margin: 0 auto;
     overflow: hidden;
-    position: relative;
-    border-radius: 15px;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    border-radius: 30px; /* Deixa as quinas arredondadas */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); 
+    border: 2px solid rgba(255, 255, 255, 0.1);
 }
 .carousel-inner {
     display: flex;
@@ -308,77 +320,84 @@ body {
     height: 100%;
 }
 
-.carousel-track {
-  display: flex;
-  transition: transform 0.8s ease;
-  height: 100%;
+
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.3); /* Fundo escuro sutil */
+    color: white;
+    border: none;
+    padding: 15px 20px;
+    cursor: pointer;
+    font-size: 24px;
+    border-radius: 50%;
+    z-index: 10;
+    transition: 0.3s;
 }
 
+.carousel-btn:hover {
+    background: #b5ced6; /* Seu azul claro */
+    color: #2c5e8c;      /* Seu azul escuro */
+}
+
+.prev, .next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.4); /* Fundo escuro transparente */
+    color: white;
+    font-size: 24px;
+    padding: 16px;
+    border: none;
+    cursor: pointer;
+    border-radius: 50%;
+    z-index: 100; /* Garante que fique acima das imagens */
+    transition: 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+}
+
+.prev {
+    left: 20px;   /* Encosta na esquerda com 20px de respiro */
+}
+
+.next {
+    right: 20px;  /* Encosta na direita com 20px de respiro */
+}
+
+/* Efeito ao passar o mouse */
+.prev:hover, .next:hover {
+    background-color: rgba(44, 94, 140, 0.9); /* Azul do seu site */
+    transform: translateY(-50%) scale(1.1);
+}
+
+/* Slides */
 .slide {
-    min-width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
     height: 100%;
-    display: none; /* Esconde os slides por padrão */
+    opacity: 0; /* Começa invisível */
+    transition: opacity 1.2s ease-in-out; /* Transição suave e lenta */
+    z-index: 0;
 }
-
+/* Slide Ativo */
 .slide.active {
-    display: block; /* Mostra apenas o slide ativo */
+    opacity: 1; /* Visível */
+    z-index: 1;
 }
 
 .slide img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Garante que a imagem preencha o espaço sem distorcer */
+    object-fit: cover; /* Mantém a proporção sem esticar */
 }
 
-/* ======= SETAS ======= */
-.arrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 2.5rem;
-  color: rgba(255, 255, 255, 0.283);
-  background: rgba(255, 255, 255, 0.034);
-  border: none;
-  border-radius: 80px;
-  padding: 10px;
-  cursor: pointer;
-  z-index: 10;
-  transition: background 0.3s;
-}
-
-.arrow:hover {
-  background: rgba(255, 255, 255, 0.3);
-}
-
-.left {
-  left: 15px;
-}
-.right {
-  right: 15px;
-}
-
-/* ======= INDICADORES ======= */
-.dots {
-  position: absolute;
-  bottom: 15px;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-}
-
-.dot {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.5);
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.dot.active {
-  background: white;
-}
 
 /* ======= RESPONSIVO ======= */
 @media (max-width: 600px) {
@@ -393,7 +412,7 @@ body {
 
 
 
-/* Sessão bg cerebro */
+/* ================Sessão bg cerebro===================== */
 
 
 
@@ -427,26 +446,41 @@ body {
     margin-bottom: 25px;
 }
 
-.logos-cerebro{
-   display: flex;
-    flex-wrap: wrap;      /* Permite que os ícones quebrem linha */
-    justify-content: center; /* Centraliza TUDO horizontalmente */
-    gap: 30px;            /* Espaçamento entre os ícones */
-    max-width: 800px;     /* Ajuste conforme a largura da sua coluna */
-    margin: 0 auto;       /* Centraliza o bloco na página */
+.img-logo {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain; /*Mantém a proporção */
 }
 
-.logos-cerebro-bg{
-    padding: auto;
-    background-color: #d9f0ff;
+.logos-cerebro {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px; /* Espaço entre elas */
+    flex-wrap: wrap;
+}
+.logo-pixeon {
+    width: 90%; /* Ajuste fino se necessário */
+}
+/* O quadrado azul de fundo que você criou */
+.logos-cerebro-bg {
+    background-color: #e1f1ff; /* Azul clarinho da sua imagem */
+    width: 150px;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     border-radius: 20px;
-    margin: 15px 25px;
-    transition: 0.2s;
+    overflow: hidden;
+    padding: 15px; /* Evita que a logo encoste nas bordas do quadrado */
 }
 .logos-cerebro-bg:hover{
     transform: translateY(-5px);
     box-shadow: 0 4px 12px rgba(0,0,0,0.3);
 }
+
 /* Sessão NEP  */
 
 .nep {
@@ -495,7 +529,7 @@ body {
 .final {
   display: flex;
   flex-direction: row;
-  height: 200px;
+  height: auto;
   background-color: #EDEDED;
   padding: 50px;
 }

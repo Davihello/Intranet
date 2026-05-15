@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Intranet - IECPN</title>
-    <link rel="stylesheet" href="css/index.css">
-    <link rel="icon" type="image/png" href="img/icone-pequeno-cerebro.png">
+    <link rel="stylesheet" href="css/index.css?=1.1">
+    <link rel="icon" type="image/png" href="img/img-cerebro.png" sizes="64x64px">
+    
 </head>
 <body>
     <div class="container-principal">
@@ -28,7 +29,7 @@
       <p>Qualidade, Humanização, Profissionalismo, Fidelização e Ética!</p>
     </section>
       
-    <div class="logo-img">
+    <div class="logo-central">
         <img src="img/bg-cerebro.png" alt="Logo IECérebro" class="img-logo"/>
     </div>  
     <!-- Atalhos  -->
@@ -87,35 +88,32 @@
 
     <div class="coluna-rolavel">
     <div class="carousel">
-     <div class="carousel-inner">
-        <?php
-        include('db/conexao.php'); // Certifique-se de que o caminho está correto
-        
-        // Busca as imagens do banco
-        $sql_carrossel = "SELECT imagem FROM db_sliders ORDER BY id DESC";
-        $res_carrossel = mysqli_query($conexao, $sql_carrossel);
-        
-        $primeiro = true; // Variável para definir o slide ativo (active)
+         
+    <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
+       
+        <div class="carousel-inner">
+            <?php
+            include('db/conexao.php');
+            $sql_carrossel = "SELECT imagem FROM db_sliders ORDER BY id DESC";
+            $res_carrossel = mysqli_query($conexao, $sql_carrossel);
+            $primeiro = true;
 
-        if (mysqli_num_rows($res_carrossel) > 0) {
-            while ($reg = mysqli_fetch_assoc($res_carrossel)) {
-                // Define a classe 'active' apenas para a primeira imagem
-                $classe_active = $primeiro ? 'active' : '';
-                
-                echo "
-                <div class='slide {$classe_active}'>
-                    <img src='img/sliders/{$reg['imagem']}' alt='Slider IEC'>
-                </div>";
-                
-                $primeiro = false;
+            if (mysqli_num_rows($res_carrossel) > 0) {
+                while ($reg = mysqli_fetch_assoc($res_carrossel)) {
+                    $classe_active = $primeiro ? 'active' : '';
+                    echo "
+                    <div class='slide {$classe_active}'>
+                        <img src='img/sliders/{$reg['imagem']}' alt='Slider IEC'>
+                    </div>";
+                    $primeiro = false;
+                }
+            } else {
+                echo "<div class='slide active'><img src='img/default.jpg'></div>";
             }
-        } else {
-            // Imagem padrão caso não tenha nada no banco
-            echo "<div class='slide active'><img src='img/default.jpg'></div>";
-        }
-        ?>
-    </div>
-</div>                   
+            ?>        
+        </div> 
+    <button class="next" onclick="changeSlide(1)">&#10095;</button>
+    </div>                   
             </section>
             
 
@@ -135,13 +133,12 @@
                         <a href="http://10.42.112.2/glpi/front/central.php"><img class="logos-cerebro" src="img/logo-glpi.png" alt="" height="150px" width="150px"></a>
                         </div>
                         <div class="logos-cerebro-bg">
-                        <a href="arya.html"><img class="logos-cerebro" src="img/Logo-Pixeon.png"  height="130px" width="160px"></a>
+                        <a href="links/arya.php"><img class="logo-pixeon" src="img/Logo-Pixeon.png"></a>
                         </div>
                     </div>
                     <br>
                     <h3>Priorize utilizar o navegador Cent Browser para acessar o MV</h3>
             </section>
-
 
             <section class="nep" id="nep">
                 <h2>Portal do NEP</h2>
@@ -186,7 +183,7 @@
         </div>
          
     </div>
-  <script src="./js/carrosel.js"></script>
+  <script src="js/carrosel.js"></script>
   <script src="js/scrollsuave.js"></script>
 </body>
 </html>

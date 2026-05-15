@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Intranet - IECPN</title>
-    <link rel="stylesheet" href="css/arya.css">
-    <link rel="icon" type="image/png" href="img/icone-pequeno-cerebro.png">
+    <link rel="stylesheet" href="../css/arya.css">
+    <link rel="icon" type="image/png" href="../img/icone-pequeno-cerebro.png">
 </head>
 <body>
     <div class="container-principal">
@@ -13,10 +13,10 @@
 
             <header>
                 <div class="logo-area">
-                  <a href="index.html"><img src="img/logo-iec.png" alt="Logo IECérebro" class="logo"/></a>
+                  <a href="../index.php"><img src="../img/logo-iec.png" alt="Logo IECérebro" class="logo"/></a>
                   <div>
                     <a href=""><button class="dev-button">RH</button></a>
-                    <a href="db/login.php"><button class="dev-button">Área de DEV</button></a>
+                    <a href="../db/login.php"><button class="dev-button">Área de DEV</button></a>
                   </div>
                 </div>
             </header>
@@ -27,9 +27,8 @@
       <h1>Seja Bem-Vindo A<br>Nossa Intranet</h1>
       <p>Qualidade, Humanização, Profissionalismo, Fidelização e Ética!</p>
     </section>
-      
     <div class="logo-img">
-        <img src="img/bg-cerebro.png" alt="Logo IECérebro" class="img-logo"/>
+        <img src="../img/bg-cerebro.png" alt="Logo IECérebro" class="img-logo"/>
     </div>  
     <!-- Atalhos  -->
     <section class="atalhos">
@@ -37,28 +36,28 @@
       <a href="#acessos" class="scroll-link">
       <div class="cards">
         <div class="card">
-          <div class="icon"><img src="img/cerebro.png" alt="cerebro" class="img-telefone"></div>
+          <div class="icon"><img src="../img/cerebro.png" alt="cerebro" class="img-telefone"></div>
           <span>MV & Arya</span>
         </div>
         </a>
 
         <a href="#nep" class="scroll-link">
         <div class="card">
-          <div class="icon"><img src="img/lampada.png" alt="lampada" class="img-telefone"></div>
+          <div class="icon"><img src="../img/lampada.png" alt="lampada" class="img-telefone"></div>
           <span>Portal do NEP</span>
         </div>
         </a>
 
         <a href="links/ramal.html">
             <div class="card">
-          <div class="icon"><img src="img/ligar.png" alt="telefone" class="img-telefone"></div>
+          <div class="icon"><img src="../img/ligar.png" alt="telefone" class="img-telefone"></div>
           <span>Ramal & Emails</span>
           </div>
         </a>
         
         <a href="http://10.42.112.2/glpi/front/central.php" >
             <div class="card">
-          <div class="icon"><img src="img/central-de-atendimento.png" alt="central" class="img-telefone"></div>
+          <div class="icon"><img src="../img/central-de-atendimento.png" alt="central" class="img-telefone"></div>
           <span>Chamados</span>
           </div>
         </a>
@@ -87,30 +86,32 @@
 
         <div class="coluna-rolavel">
             <div class="carousel">
-              <div class="carousel-track">
-                <div class="slide active">
-                  <img src="img/sliders/7071c6be6a155f5552bff3066923310f.jpeg" alt="Imagem 1">
-                </div>
-                <div class="slide">
-                  <img src="img/sliders/7b0e8c5fb7f908ff4a9d2fd3d95c1de6.jpeg" alt="Imagem 2">
-                </div>
-                <div class="slide">
-                  <img src="img/sliders/a4f60608f6aa6fc73081dd06abd7fd9c.jpeg" alt="Imagem 3">
-                </div>
-                <div class="slide">
-                  <img src="img/sliders/e393ca15021911f8d6c264bea0099461.jpg" alt="Imagem 4">
-                </div>
-                <div class="slide">
-                  <img src="img/sliders/e98f54fa332cfd1421bf7a3e64737d56.jpg" alt="Imagem 5">
-                </div>
-              </div>
+              <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
+       
+        <div class="carousel-inner">
+            <?php
+            include('../db/conexao.php');
+            $sql_carrossel = "SELECT imagem FROM db_sliders ORDER BY id DESC";
+            $res_carrossel = mysqli_query($conexao, $sql_carrossel);
+            $primeiro = true;
 
-              <!-- Botões de navegação -->
-              <button class="arrow left">&#10094;</button>
-              <button class="arrow right">&#10095;</button>
-
-              <!-- Indicadores -->
-              <div class="dots"></div>
+            if (mysqli_num_rows($res_carrossel) > 0) {
+                while ($reg = mysqli_fetch_assoc($res_carrossel)) {
+                    $classe_active = $primeiro ? 'active' : '';
+                    echo "
+                    <div class='slide {$classe_active}'>
+                        <img src='../img/sliders/{$reg['imagem']}' alt='Slider IEC'>
+                    </div>";
+                    $primeiro = false;
+                }
+            } else {
+                echo "<div class='slide active'><img src='img/default.jpg'></div>";
+            }
+            ?>        
+    </div> 
+    
+    <button class="next" onclick="changeSlide(1)">&#10095;</button>
+            
             </div>                    
             </section>
             
@@ -119,7 +120,7 @@
                 <div class="acessos-paragrafo">
                   <h1>Acesso ao Visualizador de Imagens Pixeon Arya</h1>
                   <br>
-                  <p><img src="img/Logo-Pixeon.png" alt="Pixeon - PACS Aurora" height="90px" width="120px"></p>
+                  <p><img src="../img/Logo-Pixeon.png" alt="Pixeon - PACS Aurora" height="90px" width="120px"></p>
                 </div>
                 <!-- Sessão de Icones  -->
                       <div class="quadrante-container">
@@ -147,13 +148,21 @@
                 </div>
               </div> 
                     
+             <div class="quadrante-container">
+                <div class="logos-cerebro-bg">     
+                  <a href="https://pixeon.clickvita.com.br/#/instituicao/IECPN">
+                     <p class="titulo-quadrante" >Acesso ao Sistema de Entrega de Exames - ClickVita</p>
+                  </a>
+                </div>
+              </div> 
+
             </section>
    
             <br>
             <div>
               <footer class="final">
               <div>
-                <img src="img/logo-iec.png" alt="" width="150px" height="100px">
+                <img src="../img/logo-iec.png" alt="" width="150px" height="100px">
               </div>
               <h3>Desenvolvido pela equipe de TI do Instituto Estadual do Cerebro - Paulo Niemeyer</h3>
             </footer>
@@ -161,7 +170,7 @@
         </div>
          
     </div>
-  <script src="./js/carrosel.js"></script>
+  <script src="../js/carrosel.js"></script>
   <script src="js/scrollsuave.js"></script>
 </body>
 </html>

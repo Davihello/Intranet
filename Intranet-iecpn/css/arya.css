@@ -127,7 +127,7 @@ header {
 /* Estilo dos Atalhos barra fixa */
 
 .atalhos {
-  margin-top: 50px;
+  margin-top: 40px;
   text-decoration: none;
 }
 
@@ -177,13 +177,15 @@ footer .menu a:hover {
 
 /* ======Estilo da logo principal======= */
 
+
 .img-logo{
   align-items: center;
-  width: 400px;
+  width: 70%;
   display: flexbox;
-  margin-top: 30px;
+  margin-top: 20px;
   border-radius: 20%;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+  height: auto;   
 
 }
 
@@ -204,6 +206,7 @@ footer .menu a:hover {
   justify-content: center;
   gap: 20px;
   flex-wrap: wrap;
+ 
   
 }
 
@@ -291,87 +294,102 @@ body {
   align-items: center;
   height: 100vh;
 }
-
+/*  ================ Sliders =================== */
 .carousel {
-  position: relative;
-  width: 90%;
-  max-width: 1080px;
-  height: 600px;
-  overflow: hidden;
-  border-radius: 15px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-  margin: 50px auto;
+    position: relative;
+    width: 100%;
+    max-width: 1080px; /* Seu ajuste de 1080x600 */
+    height: 600px;
+    margin: 0 auto;
+    overflow: hidden;
+    border-radius: 30px; /* Deixa as quinas arredondadas */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); 
+    border: 2px solid rgba(255, 255, 255, 0.1);
+}
+.carousel-inner {
+    display: flex;
+    width: 100%;
+    height: 100%;
 }
 
-.carousel-track {
-  display: flex;
-  transition: transform 0.8s ease;
-  height: 100%;
+
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.3); /* Fundo escuro sutil */
+    color: white;
+    border: none;
+    padding: 15px 20px;
+    cursor: pointer;
+    font-size: 24px;
+    border-radius: 50%;
+    z-index: 10;
+    transition: 0.3s;
 }
 
+.carousel-btn:hover {
+    background: #b5ced6; /* Seu azul claro */
+    color: #2c5e8c;      /* Seu azul escuro */
+}
+
+.prev, .next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.4); /* Fundo escuro transparente */
+    color: white;
+    font-size: 24px;
+    padding: 16px;
+    border: none;
+    cursor: pointer;
+    border-radius: 50%;
+    z-index: 100; /* Garante que fique acima das imagens */
+    transition: 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+}
+
+.prev {
+    left: 20px;   /* Encosta na esquerda com 20px de respiro */
+}
+
+.next {
+    right: 20px;  /* Encosta na direita com 20px de respiro */
+}
+
+/* Efeito ao passar o mouse */
+.prev:hover, .next:hover {
+    background-color: rgba(44, 94, 140, 0.9); /* Azul do seu site */
+    transform: translateY(-50%) scale(1.1);
+}
+
+/* Slides */
 .slide {
-  min-width: 100%;
-  height: 100%;
-  transition: opacity 1s ease;
-  object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0; /* Começa invisível */
+    transition: opacity 1.2s ease-in-out; /* Transição suave e lenta */
+    z-index: 0;
+}
+/* Slide Ativo */
+.slide.active {
+    opacity: 1; /* Visível */
+    z-index: 1;
 }
 
 .slide img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  background-color: transparent;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Mantém a proporção sem esticar */
 }
 
-/* ======= SETAS ======= */
-.arrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 2.5rem;
-  color: rgba(255, 255, 255, 0.283);
-  background: rgba(255, 255, 255, 0.034);
-  border: none;
-  border-radius: 80px;
-  padding: 10px;
-  cursor: pointer;
-  z-index: 10;
-  transition: background 0.3s;
-}
-
-.arrow:hover {
-  background: rgba(255, 255, 255, 0.3);
-}
-
-.left {
-  left: 15px;
-}
-.right {
-  right: 15px;
-}
-
-/* ======= INDICADORES ======= */
-.dots {
-  position: absolute;
-  bottom: 15px;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-}
-
-.dot {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.5);
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.dot.active {
-  background: white;
-}
 
 /* ======= RESPONSIVO ======= */
 @media (max-width: 600px) {
@@ -385,8 +403,7 @@ body {
 }
 
 
-
-/* Sessão bg cerebro */
+/* ====================Sessão bg cerebro============== */
 
 
 
@@ -419,6 +436,15 @@ body {
 }
 .acessos-paragrafo {
     margin-bottom: 25px;
+}
+
+.img-logo {
+    max-width: 70%;
+    max-height: 90%;
+    border-radius: 20px;
+    width: auto;
+    height: auto;
+    object-fit: contain; /*Mantém a proporção */
 }
 
 .logos-cerebro{
