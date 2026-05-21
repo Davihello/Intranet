@@ -154,34 +154,26 @@ section a {
 .logo-central {
     display: flex;                  /* Ativa Flexbox */
     justify-content: center;        /* Centraliza horizontalmente */
-    align-items: center;            /* Centraliza verticalmente se necessário */
-    width: 70%;                    /* Garante que o container ocupe a largura total */
-    max-width: 1200px;              /* Largura máxima em telas grandes */
-    height: auto;                   /* Altura automática */
-    margin: 20px auto;              /* Margem para separar dos outros elementos */
-    overflow: hidden;               /* Garante que o conteúdo não vaze */
-    border-radius: 20px;            /* Bordas arredondadas (como na imagem) */
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2); /* Sombra para dar profundidade */
-    max-width: 320px !important; 
+    align-items: center;            /* Centraliza verticalmente */
+    width: 100%;                    
+    max-width: 260px !important;    /* Reduzido um pouco para dar mais respiro vertical na tela */
+    height: auto;                   
+    margin: 5px auto;               /* Reduzido drasticamente (de 20px para 5px) para economizar espaço */
+    overflow: hidden;               
+    background: transparent !important; /* Garante que o fundo do container seja invisível */
+    border-radius: 0;
+    box-shadow: none; 
 }
 
-/* Regras para a imagem do banner */
-.img-banner {
-    width: 100%;                    /* A imagem ocupa toda a largura do container */
-    height: auto;                   /* Mantém a proporção da imagem */
-    object-fit: cover;              /* Cobre a área sem distorcer (essencial para responsividade) */
-    display: block;                  /* Remove espaços vazios na base */
-}
-
-.img-logo{
-  align-items: center;
-  width: 70%;
-  display: flexbox;
-  margin-top: 20px;
-  border-radius: 20%;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-  height: auto;   
-
+/* Regras para a imagem do cérebro em si */
+.img-logo {
+    width: 100%;                    /* Ocupa o tamanho exato do container (260px) */
+    height: auto;   
+    display: block;
+    background: transparent !important; /* Força a transparência nativa do PNG */
+    box-shadow: none;
+    margin: 0;
+    border-radius: 0;
 }
 
 

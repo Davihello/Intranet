@@ -97,43 +97,10 @@
       </div>
     </section>
   </main>
-
-    1
       </div>
 
-
-        <div class="coluna-rolavel">
-            <div class="carousel">
-              <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
-       
-        <div class="carousel-inner">
-            <?php
-            include('../db/conexao.php');
-            $sql_carrossel = "SELECT imagem FROM db_sliders ORDER BY id DESC";
-            $res_carrossel = mysqli_query($conexao, $sql_carrossel);
-            $primeiro = true;
-
-            if (mysqli_num_rows($res_carrossel) > 0) {
-                while ($reg = mysqli_fetch_assoc($res_carrossel)) {
-                    $classe_active = $primeiro ? 'active' : '';
-                    echo "
-                    <div class='slide {$classe_active}'>
-                        <img src='../img/sliders/{$reg['imagem']}' alt='Slider IEC'>
-                    </div>";
-                    $primeiro = false;
-                }
-            } else {
-                echo "<div class='slide active'><img src='img/default.jpg'></div>";
-            }
-            ?>        
-    </div> 
-    
-    <button class="next" onclick="changeSlide(1)">&#10095;</button>
-            
-            </div>                    
-            </section>
-            
-
+        <div class="coluna-rolavel">              
+          
             <section class="acessos" id="acessos">
                 <div class="acessos-paragrafo">
                   <h1>Acesso ao Visualizador de Imagens Pixeon Arya</h1>
