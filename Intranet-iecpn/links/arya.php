@@ -27,14 +27,17 @@
       <h1>Seja Bem-Vindo A<br>Nossa Intranet</h1>
       <p>Qualidade, Humanização, Profissionalismo, Fidelização e Ética!</p>
     </section>
-    <div class="logo-img">
+    <div class="logo-central">
         <img src="../img/bg-cerebro.png" alt="Logo IECérebro" class="img-logo"/>
     </div>  
     <!-- Atalhos  -->
     <section class="atalhos">
+
       <h3>Atalhos mais utilizados</h3>
-      <a href="#acessos" class="scroll-link">
+      
       <div class="cards">
+
+        <a href="#acessos" class="scroll-link">
         <div class="card">
           <div class="icon"><img src="../img/cerebro.png" alt="cerebro" class="img-telefone"></div>
           <span>MV & Arya</span>
@@ -49,16 +52,45 @@
         </a>
 
         <a href="links/ramal.html">
-            <div class="card">
+        <div class="card">
           <div class="icon"><img src="../img/ligar.png" alt="telefone" class="img-telefone"></div>
           <span>Ramal & Emails</span>
-          </div>
+        </div>
         </a>
         
         <a href="http://10.42.112.2/glpi/front/central.php" >
-            <div class="card">
+        <div class="card">
           <div class="icon"><img src="../img/central-de-atendimento.png" alt="central" class="img-telefone"></div>
           <span>Chamados</span>
+        </div>
+        </a>
+
+                <a href="tutoriais.html">
+            <div class="card">
+          <div class="icon"><img src="../img/livro.png" alt="central" class="img-telefone"></div>
+          <span>Tutoriais</span>
+          </div>
+        </a>
+
+       <a href="cardapio/CARDÁPIO_NOVEMBRO_2025.pdf" target="_blank">
+          <div class="card">
+          <div class="icon"><img src="../img/cardapio.png" alt="central" class="img-telefone"></div>
+          <span>Cardápio</span>
+          </div>
+        </a>
+
+        <a href="elogios.html" target="_blank">
+          <div class="card">
+          <div class="icon"><img src="../img/feedback.png" alt="central" class="img-telefone"></div>
+          <span>Elogios</span>
+          </div>
+        </a>
+
+
+         <a href="setores.html">
+          <div class="card">
+          <div class="icon"><img src="../img/grupo-de-usuarios.png" alt="central" class="img-telefone"></div>
+          <span>Setores</span>
           </div>
         </a>
         
@@ -66,21 +98,7 @@
     </section>
   </main>
 
-
-  <footer>
-    <nav class="menu">
-      <a href="./links/tutoriais.html">Tutoriais</a>
-      <a href="./cardapio/CARDÁPIO_NOVEMBRO_2025.pdf" target="_blank">Cardápio</a>
-      <a href="./links/elogios.html">Elogios</a>
-      <a href="./links/setores.html">Setores</a>
-    </nav>
-    
-    
-
-  </footer>
-
-         
-    
+    1
       </div>
 
 

@@ -13,26 +13,34 @@ body, html {
 
 
 
-/* Define o contêiner principal para usar Flexbox */
+/* =============Define o contêiner principal para usar Flexbox =============*/
 
 .container-principal {
 
  
-   display: flex; 
+  display: flex; 
     height: 100vh; /* Trava a altura na altura da tela */
     width: 100%; 
-    overflow: hidden; /* Impede que a página inteira role */
-   
-  
+    overflow: hidden; /* Impede que a página inteira role */  
+   background-color: #EDEDED;
+
+
 }
 
-/* Estilos para a coluna fixa  */
+/*================ Estilos para a coluna fixa ========== */
+
 .coluna-fixa {
-    width:40%; 
+  width: 48%;           /* Aumentado para acomodar 4 cards lado a lado */
+    min-width: 680px;     /* Largura mínima de segurança para os 4 cards não esmagarem */
     background-color: #3a91dc; 
-    padding: 20px; 
+    padding: 15px 15px; 
     box-sizing: border-box; 
-    height: 150vh;
+    height: 100vh; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    overflow-y: hidden; 
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
@@ -127,8 +135,11 @@ header {
 /* Estilo dos Atalhos barra fixa */
 
 .atalhos {
-  margin-top: 40px;
-  text-decoration: none;
+   margin-top: 10px;
+    margin-bottom: 10px;
+    width: 100%;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 section a { 
@@ -141,41 +152,31 @@ section a {
   margin-bottom: 25px;
 }
 
-/* =============== Container do menu do rodapé================= */
 
-/* rodapé da esquerda */
-footer .menu {
-    display: flex;
-    flex-wrap: wrap;      /* Permite que os links quebrem linha se o espaço acabar */
-    justify-content: center;
-    gap: 10px;            /* Espaço entre os botões */
-    padding: 20px 10px;
-    margin-top: 20px;
+  
+
+/* Container que envolve o banner */
+.logo-central {
+    display: flex;                  /* Ativa Flexbox */
+    justify-content: center;        /* Centraliza horizontalmente */
+    align-items: center;            /* Centraliza verticalmente se necessário */
+    width: 70%;                    /* Garante que o container ocupe a largura total */
+    max-width: 1200px;              /* Largura máxima em telas grandes */
+    height: auto;                   /* Altura automática */
+    margin: 20px auto;              /* Margem para separar dos outros elementos */
+    overflow: hidden;               /* Garante que o conteúdo não vaze */
+    border-radius: 20px;            /* Bordas arredondadas (como na imagem) */
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2); /* Sombra para dar profundidade */
+    max-width: 320px !important; 
 }
 
-/* Os links individuais */
-footer .menu a {
-    background-color: #d9f0ff; /* Azul claro para combinar com os cards */
-    color: #333;
-    text-decoration: none;
-    padding: 8px 15px;
-    border-radius: 20px;    /* Bordas arredondadas modernas */
-    font-size: 0.85rem;
-    font-weight: 600;
-    transition: all 0.3s ease;
-    border: 1px solid transparent;
+/* Regras para a imagem do banner */
+.img-banner {
+    width: 100%;                    /* A imagem ocupa toda a largura do container */
+    height: auto;                   /* Mantém a proporção da imagem */
+    object-fit: cover;              /* Cobre a área sem distorcer (essencial para responsividade) */
+    display: block;                  /* Remove espaços vazios na base */
 }
-
-/* Efeito ao passar o mouse */
-footer .menu a:hover {
-    background-color: #D2FD9C; /* Verde destaque que você já usa */
-    transform: translateY(-3px);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    color: #000;
-}
-
-
-/* ======Estilo da logo principal======= */
 
 
 .img-logo{
@@ -189,42 +190,42 @@ footer .menu a:hover {
 
 }
 
-@media (max-width: 600px) {
-  .img-logo {
-    height: 250px;
-  }
-  .atalhos {
-    font-size: 1.8rem;
-    padding: 6px;
-  }
+/* Consulta de mídia para dispositivos móveis (telas menores que 768px) */
+@media (max-width: 768px) {
+    .logo-central {
+        max-width: 90%;             /* Usa 90% da largura da tela no celular */
+        margin: 10px auto;           /* Menos margem no celular */
+        border-radius: 10px;         /* Bordas um pouco menos arredondadas */
+    }
 }
 
-/* Cards do atalho */
-
+/* ======== Container que distribui os blocos ======= */
 .cards {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  flex-wrap: wrap;
- 
-  
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    gap: 10px;               /* Espaçamento sutil entre os 4 cartões */
+    flex-wrap: wrap;         /* Caso a tela seja muito pequena, eles quebram elegantemente */
+    width: 100%;
+    max-width: 660px;        /* Expandido para permitir a extensão horizontal dos 4 blocos */
+    margin: 0 auto; 
 }
 
-/* Cards do atalho */
 
+/* Cards do atalho */
 .card {
-    
-  background-color: #d9f0ff;
-  color: #222;
-  width: 150px;
-  height: 101px;
-  border-radius: 10px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-weight: 600;
-  transition: transform 0.2s, box-shadow 0.2s;
+    background-color: #d9f0ff;
+    color: #222;
+    width: 100%;             
+    height: 101px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 0.85rem;      /* Reduzido levemente a fonte para os textos maiores caberem em uma linha */
+    transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .card:hover {
@@ -232,6 +233,15 @@ footer .menu a:hover {
   background-color: #D2FD9C;
   transform: translateY(-15px);
   
+}
+
+.cards a {
+    text-decoration: none;
+    display: block;
+    /* Calcula 25% do espaço total menos o desconto proporcional do gap */
+    flex: 0 0 calc(25% - 8px); 
+    min-width: 130px;        /* Não deixa o card esmagar além do aceitável */
+    max-width: 150px;
 }
 
 .icon {
@@ -298,7 +308,7 @@ body {
 .carousel {
     position: relative;
     width: 100%;
-    max-width: 1080px; /* Seu ajuste de 1080x600 */
+    max-width: 1080px; /* ajuste de 1080x600 */
     height: 600px;
     margin: 0 auto;
     overflow: hidden;
@@ -317,7 +327,7 @@ body {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background: rgba(0, 0, 0, 0.3); /* Fundo escuro sutil */
+    background: rgba(0, 0, 0, 0.3); /* Fundo escuro  */
     color: white;
     border: none;
     padding: 15px 20px;
@@ -329,8 +339,8 @@ body {
 }
 
 .carousel-btn:hover {
-    background: #b5ced6; /* Seu azul claro */
-    color: #2c5e8c;      /* Seu azul escuro */
+    background: #b5ced6; /* azul claro */
+    color: #2c5e8c;      /* azul escuro */
 }
 
 .prev, .next {
@@ -363,11 +373,11 @@ body {
 
 /* Efeito ao passar o mouse */
 .prev:hover, .next:hover {
-    background-color: rgba(44, 94, 140, 0.9); /* Azul do seu site */
+    background-color: rgba(44, 94, 140, 0.9); 
     transform: translateY(-50%) scale(1.1);
 }
 
-/* Slides */
+/* ============ Slides ============= */
 .slide {
     position: absolute;
     top: 0;
@@ -378,7 +388,8 @@ body {
     transition: opacity 1.2s ease-in-out; /* Transição suave e lenta */
     z-index: 0;
 }
-/* Slide Ativo */
+
+/*============ Slide Ativo =============== */
 .slide.active {
     opacity: 1; /* Visível */
     z-index: 1;

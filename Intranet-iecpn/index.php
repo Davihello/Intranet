@@ -6,7 +6,7 @@
     <title>Intranet - IECPN</title>
     <link rel="stylesheet" href="css/index.css?=1.1">
     <link rel="icon" type="image/png" href="img/img-cerebro.png" sizes="64x64px">
-    
+    <link rel="stylesheet" href="css/contraCheque.css">    
 </head>
 <body>
     <div class="container-principal">
@@ -33,8 +33,11 @@
         <img src="img/bg-cerebro.png" alt="Logo IECérebro" class="img-logo"/>
     </div>  
     <!-- Atalhos  -->
+    
     <section class="atalhos">
-      <h3>Atalhos mais utilizados</h3>
+      
+    <h3>Atalhos mais utilizados</h3>
+      
       <a href="#acessos" class="scroll-link">
       <div class="cards">
         <div class="card">
@@ -50,7 +53,7 @@
         </div>
         </a>
 
-        <a href="links/ramal.html">
+        <a href="#ramal-email" class="scroll-link">
             <div class="card">
           <div class="icon"><img src="img/ligar.png" alt="telefone" class="img-telefone"></div>
           <span>Ramal & Emails</span>
@@ -63,26 +66,41 @@
           <span>Chamados</span>
           </div>
         </a>
+
+        <a href="./links/tutoriais.html">
+            <div class="card">
+          <div class="icon"><img src="img/livro.png" alt="central" class="img-telefone"></div>
+          <span>Tutoriais</span>
+          </div>
+        </a>
+
+       <a href="./cardapio/CARDÁPIO_NOVEMBRO_2025.pdf" target="_blank">
+          <div class="card">
+          <div class="icon"><img src="img/cardapio.png" alt="central" class="img-telefone"></div>
+          <span>Cardápio</span>
+          </div>
+        </a>
+
+        <a href="./links/elogios.html" target="_blank">
+          <div class="card">
+          <div class="icon"><img src="img/feedback.png" alt="central" class="img-telefone"></div>
+          <span>Elogios</span>
+          </div>
+        </a>
+
+
+         <a href="./links/setores.html">
+          <div class="card">
+          <div class="icon"><img src="img/grupo-de-usuarios.png" alt="central" class="img-telefone"></div>
+          <span>Setores</span>
+          </div>
+        </a>
         
       </div>
     </section>
   </main>
 
-
-  <footer>
-    <nav class="menu">
-      <a href="./links/tutoriais.html">Tutoriais</a>
-      <a href="./cardapio/CARDÁPIO_NOVEMBRO_2025.pdf" target="_blank">Cardápio</a>
-      <a href="./links/elogios.html">Elogios</a>
-      <a href="./links/setores.html">Setores</a>
-    </nav>
-    
-    
-
-  </footer>
-
-         
-    
+  
       </div>
 
 
@@ -114,9 +132,8 @@
         </div> 
     <button class="next" onclick="changeSlide(1)">&#10095;</button>
     </div>                   
-            </section>
+          </section>
             
-
             <section class="acessos" id="acessos">
                 <div class="acessos-paragrafo">
                   <h1>Acesso ao Sistema MV</h1>
@@ -139,6 +156,30 @@
                     <br>
                     <h3>Priorize utilizar o navegador Cent Browser para acessar o MV</h3>
             </section>
+            
+            
+            <!-- =========================
+            BANNER DE TESTE PARA INTRANET
+            ========================= -->
+            <h2>Novo Portal de Contra-Cheques</h2>
+          <div class="banner-container">
+
+          <a href="http://10.100.9.66/iecpn_contracheques" target="_blank" class="banner-link">
+
+          <img 
+            src="img/banner.png"
+            alt="Portal IECPN"
+            class="banner-img">
+
+        
+        <div class="banner-overlay">
+            <h2></h2> <!--CASO QUEIRA ADD INFORMAÇÕES-->
+            <p></p>   <!--CASO QUEIRA ADD INFORMAÇÕES-->
+
+            
+        </div>
+        </a>
+        </div>
 
             <section class="nep" id="nep">
                 <h2>Portal do NEP</h2>
@@ -147,6 +188,8 @@
                         <h4>Realize treinamentos essenciais para área da saúde!</h4>
                     </div>                    
             </section>
+
+           
             
             
             <section class="ramal-email" id="ramal-email">
