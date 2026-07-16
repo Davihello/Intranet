@@ -1,0 +1,87 @@
+
+    /* Importando fonte moderna */
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
+    
+    body { background-color: #3a91dc; color: #f8fafc; } /* Fundo dark para destacar os degradês */
+
+    header {
+      background-color: #74747e;
+    }
+
+    .container-tiles {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 25px;
+        padding: 40px;
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+
+    .tile {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-decoration: none;
+        padding: 50px 20px;
+        border-radius: 30px; /* Bordas super arredondadas */
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        color: white;
+        text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
+
+    /* Efeito de flutuação e brilho no hover */
+    .tile:hover {
+        transform: translateY(-12px) scale(1.02);
+        box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+        filter: brightness(1.1);
+    }
+
+    .tile i { 
+        font-size: 60px; 
+        margin-bottom: 25px;
+        filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));
+    }
+
+    .tile span { 
+        font-size: 24px; 
+        font-weight: 800; 
+        letter-spacing: -0.5px;
+        text-transform: uppercase;
+    }
+
+    /* Paleta de Degradês Modernos (Vibrant Mesh) */
+    
+    /* Slider/Imagens */
+    .bg-mint { background: linear-gradient(135deg, #00b09b 0%, #96c93d 100%); }
+    
+    /* Usuários */
+    .bg-teal { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); }
+    
+    /* Info */
+    .bg-blue { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+    
+    /* Sistemas */
+    .bg-purple { background: linear-gradient(135deg, #b721ff 0%, #21d4fd 100%); }
+    
+    /* Tarefas/Estoque */
+    .bg-pink { background: linear-gradient(135deg, #ee9ca7 0%, #ffdde1 100%); color: #4a1d1d !important; }
+    .bg-salmon { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); }
+    
+    /* Logs/Controle */
+    .bg-orange { background: linear-gradient(135deg, #f9d423 0%, #ff4e50 100%); }
+    
+    /* Botão Sair/Home */
+    .bg-red { background: linear-gradient(135deg, #ed213a 0%, #93291e 100%); }
+    
+    /* Em breve */
+    .bg-black { background: linear-gradient(135deg, #434343 0%, #000000 100%); }
+
+    /* Responsividade */
+    @media (max-width: 768px) {
+        .container-tiles { grid-template-columns: 1fr; }
+    }
