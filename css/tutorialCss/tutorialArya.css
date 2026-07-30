@@ -1,0 +1,130 @@
+/* Reset Básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background-color: #ffffff;
+  color: #333333;
+}
+
+/* ==================== NAVBAR ==================== */
+.navbar {
+  width: 100%;
+  background-color: #3a91dc; 
+  padding: 15px 40px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.navbar-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo img {
+  height: 55px;
+  display: block;
+}
+
+.nav-menu {
+  display: flex;
+  gap: 25px;
+}
+
+.nav-menu a {
+  text-decoration: none;
+  color: #2b3a4a;
+  font-size: 1.1rem;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.nav-menu a:hover {
+  color: #93b5d7;
+}
+
+/* ==================== CONTEÚDO DO TUTORIAL ==================== */
+.tutorial-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 50px 20px;
+  text-align: center;
+}
+
+.tutorial-titulo {
+  font-size: 4.0rem;
+  color: #34495e;
+  font-weight: 500;
+  margin-bottom: 40px;
+}
+
+.tutorial-texto {
+  font-size: 1.25rem;
+  color: #2c3e50;
+  margin: 65px;
+  margin-bottom: 25px;
+  line-height: 1.6;
+}
+
+.link-ip {
+  color: #4a90e2;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.link-ip:hover {
+  text-decoration: underline;
+}
+
+.tutorial-subtexto {
+  font-size: 1.2rem;
+  color: #333;
+  margin-bottom: 30px;
+}
+
+/* Imagem do Print */
+.tutorial-imagem {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15); /* Sombra suave para destacar o print */
+}
+
+.tutorial-imagem img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Responsividade básica para telas menores */
+@media (max-width: 900px) {
+  .navbar-container {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .nav-menu {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+  }
+
+  .tutorial-titulo {
+    font-size: 1.8rem;
+  }
+
+  .tutorial-texto {
+    font-size: 1.1rem;
+  }
+}

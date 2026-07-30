@@ -6,7 +6,8 @@
     <title>Intranet - IECPN</title>
     <link rel="stylesheet" href="css/index.css?=1.1">
     <link rel="icon" type="image/png" href="img/img-cerebro.png" sizes="64x64px">
-    <link rel="stylesheet" href="css/contraCheque.css">    
+    <link rel="stylesheet" href="css/contraCheque.css">   
+    <link rel="stylesheet" href="css/cardapio.css"> 
 </head>
 <body>
     <div class="container-principal">
@@ -62,7 +63,7 @@
           </div>
         </a>
         
-        <a href="http://10.42.112.2/glpi/front/central.php">
+        <a href="http://10.42.112.2/glpi/front/central.php" target="_blank" rel="noopener noreferrer">
             <div class="card">
           <div class="icon"><img src="img/central-de-atendimento.png" alt="central" class="img-telefone"></div>
           <span>Chamados</span>
@@ -76,7 +77,7 @@
           </div>
         </a>
 
-       <a href="./cardapio/CARDÁPIO_NOVEMBRO_2025.pdf" target="_blank">
+       <a href="javascript:void(0);" onclick="openModalCardapio()" class="shortcut-card">
           <div class="card">
           <div class="icon"><img src="img/cardapio.png" alt="central" class="img-telefone"></div>
           <span>Cardápio</span>
@@ -185,7 +186,7 @@
 
             <section class="nep" id="nep">
                 <h2>Portal do NEP</h2>
-                <a href="https://linktr.ee/nep.iecpn#496337501" target="_blank" rel="noopener noreferrer"><img class="img-nep" src="img/logo-NEP.PNG" alt="" height="300px" width="400px"></a>
+                <a href="https://sites.google.com/view/nucleodeeducacaopermanente-iec/p%C3%A1gina-inicial" target="_blank" rel="noopener noreferrer"><img class="img-nep" src="img/logo-NEP.PNG" alt="" height="300px" width="400px"></a>
                     <div class="texto-nep">
                         <h4>Realize treinamentos essenciais para área da saúde!</h4>
                     </div>                    
@@ -228,7 +229,9 @@
         </div>
          
     </div>
+  <?php include('links/cardapio.php'); ?>
   <script src="js/carrosel.js"></script>
   <script src="js/scrollsuave.js"></script>
+  <script src="js/cardapio.js"></script>
 </body>
 </html>

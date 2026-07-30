@@ -1,0 +1,368 @@
+html {
+  scroll-behavior: smooth;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+/* Reset geral */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* ============= Container principal (Flexbox) ============= */
+.container-principal {
+    display: flex; 
+    height: 100vh; 
+    width: 100%; 
+    overflow: hidden; 
+    background-color: #EDEDED;
+}
+
+/* ================ Coluna fixa (barra lateral azul) ================ */
+.coluna-fixa {
+    width: 48%;
+    min-width: 680px;
+    background-color: #3a91dc; 
+    padding: 15px 15px; 
+    box-sizing: border-box; 
+    height: 100vh; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    overflow-y: hidden; 
+    position: relative;
+    z-index: 0;
+    color: white;
+}
+
+/* Marca d'água de fundo da coluna fixa */
+.coluna-fixa::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url('../img/bg-medico-cerebro.png');
+    background-size: cover;
+    background-position: center 30%;
+    background-repeat: no-repeat;
+    opacity: 0.30;
+    z-index: -1;
+    pointer-events: none;
+}
+
+.coluna-fixa > header,
+.coluna-fixa > main {
+    position: relative;
+    z-index: 1;
+}
+
+/* Cabeçalho da coluna fixa */
+header {
+  width: 100%;
+  padding: 15px;
+  display: flex;
+  justify-content: center;
+}
+
+.logo-area {
+  width: 90%;
+  max-width: 900px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+.logo-area img {
+  border-radius: 10px;
+}
+
+.logo {
+  height: 80px;
+}
+
+.dev-button {
+  background-color: #d9f0ff;
+  color: #000;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: 0.2s;
+}
+
+.dev-button:hover {
+  transform: translateY(-2px);
+  background-color: #D2FD9C;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+/* Título principal */
+.welcome h1 {
+  font-size: 2.0em;
+  margin-top: 30px;
+  line-height: 1.4;
+}
+.welcome p {
+  color: #d9f0ff;
+  font-weight: 300;
+  margin-top: 10px;
+  font-size: 1.5rem;
+}
+
+/* Atalhos */
+.atalhos {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 100%;
+    padding: 0;
+    box-sizing: border-box;
+}
+section a { 
+    text-decoration: none;
+}
+
+.atalhos h3 {
+  color: #D2FD9C;
+  font-size: 1.5rem;
+  margin-bottom: 25px;
+}
+/* ======Estilo da logo principal======= */
+
+/* Container que envolve o banner */
+.logo-central {
+    display: flex;                  /* Ativa Flexbox */
+    justify-content: center;        /* Centraliza horizontalmente */
+    align-items: center;            /* Centraliza verticalmente */
+    width: 100%;                    
+    max-width: 260px !important;    /* Reduzido um pouco para dar mais respiro vertical na tela */
+    height: auto;                   
+    margin: 5px auto;               /* Reduzido drasticamente (de 20px para 5px) para economizar espaço */
+    overflow: hidden;               
+    background: transparent !important; /* Garante que o fundo do container seja invisível */
+    border-radius: 0;
+    box-shadow: none; 
+}
+
+/* Regras para a imagem do cérebro em si */
+.img-logo {
+    width: 100%;                    /* Ocupa o tamanho exato do container (260px) */
+    height: auto;   
+    display: block;
+    background: transparent !important; /* Força a transparência nativa do PNG */
+    box-shadow: none;
+    margin: 0;
+    border-radius: 0;
+}
+
+
+/* Consulta de mídia para dispositivos móveis (telas menores que 768px) */
+@media (max-width: 768px) {
+    .logo-central {
+        max-width: 90%;             /* Usa 90% da largura da tela no celular */
+        margin: 10px auto;           /* Menos margem no celular */
+        border-radius: 10px;         /* Bordas um pouco menos arredondadas */
+    }
+}
+
+
+/* Cards do atalho */
+.cards {
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    width: 100%;
+    max-width: 660px;
+    margin: 0 auto; 
+}
+
+.cards a {
+    text-decoration: none;
+    display: block;
+    flex: 0 0 calc(25% - 8px); 
+    min-width: 130px;
+    max-width: 150px;
+}
+
+.card {
+    background-color: #d9f0ff;
+    color: #222;
+    width: 100%;             
+    height: 101px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 0.85rem;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+  background-color: #D2FD9C;
+  transform: translateY(-15px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+.icon {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+footer {
+  margin-top: auto;
+  padding: 30px 0;
+}
+
+/* Submenus */
+.menu a {
+  color: #000000;
+  background-color: #d9f0ff;
+  border-radius: 5px;
+  padding: 5px 10px;
+  text-decoration: none;
+  margin: 0 15px;
+  font-weight: 500;
+  transition: 0.2s;
+}
+
+.menu a:hover {
+  background-color: #D2FD9C;
+  transform: translateY(-15px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+/* ====== Coluna com rolagem (conteúdo específico desta página) ====== */
+.coluna-rolavel {
+    width: 65%; 
+    overflow-y: auto; 
+    margin: 0;
+    background-color: white;
+    color: #000;
+    height: 100%;
+    overscroll-behavior-y: contain;
+}
+
+/* Barra de busca */
+.search-box {
+  width: 100%;
+  max-width: 400px;
+  margin: 0px 50px 0px 50px;
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 10px 15px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  outline: none;
+  transition: 0.3s;
+}
+
+input[type="text"]:focus {
+  border-color: #009879;
+  box-shadow: 0 0 6px rgba(0, 152, 121, 0.3);
+}
+
+/* Tabela */
+.tabela h3 {
+  margin-top: 15px;      /* Espaço em relação ao elemento de cima */
+  margin-bottom: 5px;    /* Reduz o espaço abaixo do título */
+  padding-left: 50px;    /* Mantém alinhado com a tabela */
+}
+
+
+.table-container {
+  width: 85%;
+  overflow-x: auto;
+  padding: 0px 50px 50px 50px; /* O primeiro valor '0px' remove todo o espaço do topo */
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  overflow-x: auto;
+  min-width: 600px;
+  
+}
+
+th, td {
+  padding: 12px 15px;
+  border-bottom: 1px solid #ddd;
+  text-align: left;
+}
+
+th {
+  background-color: #3a91dc;
+  color: white;
+}
+
+tr:nth-child(even) {
+  background-color: #f3f3f3;
+}
+
+tr:hover {
+  background-color: #a0c2df;
+}
+
+/* Sessão Ramal e Email */
+.ramal-email {
+  height: 450px;
+  padding-top: 30px;
+  padding-bottom: 20px; /* Adiciona um distância segura na base */
+}
+
+.ramal-paragrafo {
+  text-align: center;
+  padding: 10px 20px;
+}
+
+.logos-ramal-email {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: 25px;
+}
+
+.logos-ramal-email-bg {
+    background-color: #d9f0ff;
+    border-radius: 20px;
+    margin: 5px 10px;
+    padding: 10px;
+    transition: 0.2s;
+}
+.logos-ramal-email-bg:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+/* Footer final */
+.final {
+  display: flex;
+  flex-direction: row;
+  height: auto;
+  background-color: #EDEDED;
+  padding: 50px;
+}
+
+.final img {
+  margin-left: 15px;
+}
+
+.final h3 {
+  margin-top: 50px;
+  margin-left: 10%;
+}

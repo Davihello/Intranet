@@ -45,9 +45,9 @@ if (!isset($_SESSION['usuario'])) {
             <span>Slider</span>
         </a>
 
-        <a href="editar.php" class="tile bg-grey">
+        <a href="links/editar.php" class="tile bg-grey">
             <i class="fa-solid fa-file-pen"></i>
-            <span>Editar páginas</span>
+            <span>Cardápio</span>
         </a>
 
         <a href="sistemas.php" class="tile bg-purple">

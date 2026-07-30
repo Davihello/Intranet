@@ -24,7 +24,7 @@
             </div>
             <a href="logout.php">
             <button type="submit" class="btn-login">Entrar</button>
-            <a/>
+            </a>
         </form>
     </div>
 </body>
