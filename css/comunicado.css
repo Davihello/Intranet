@@ -1,0 +1,60 @@
+.modal-aviso-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.75);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 99999;
+            backdrop-filter: blur(4px);
+        }
+
+        .modal-aviso-card {
+            background-color: #315896;
+            color: #ffffff;
+            width: 90%;
+            max-width: 500px;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            animation: popupAnimation 0.3s ease-out;
+            font-family: Arial, sans-serif;
+        }
+
+        @keyframes popupAnimation {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .modal-aviso-header h2 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: #ffffff;
+        }
+
+        .modal-aviso-body p {
+            font-size: 15px;
+            line-height: 1.5;
+            color: #e0e6ed;
+            margin-bottom: 20px;
+        }
+
+        .btn-fechar-aviso {
+            background-color: #20c997;
+            color: #ffffff;
+            border: none;
+            padding: 12px 24px;
+            font-size: 15px;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .btn-fechar-aviso:hover {
+            background-color: #1baa80;
+        }

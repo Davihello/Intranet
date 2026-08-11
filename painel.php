@@ -1,41 +1,57 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<link rel="icon" type="image/png" href="img/img-cerebro.png" sizes="64x64px">
-<head>
-    <?php
+<?php
 session_start();
 
 // Se não existir a variável de sessão 'usuario', manda de volta para o login
 if (!isset($_SESSION['usuario'])) {
-    header("Location: login.html"); // ou index.html, onde estiver seu form
+    header("Location: login.html");
     exit();
 }
 ?>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Intranet - IECPN</title>
     <link rel="stylesheet" href="css/painel.css">
-    <link rel="icon" type="image/png" href="img/icone-pequeno-cerebro.png">
+    <link rel="icon" type="image/png" href="img/img-cerebro.png">
+    <!-- Font Awesome para ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-<header class="header-painel">
+    <header class="header-painel">
         <div class="user-activity">
             <i class="fa-regular fa-clock"></i>
             <?php echo $_SESSION['usuario'] ?? 'usuário'; ?> adicionou um slide às <?php echo date('Y-m-d H:i:s'); ?>
         </div>
-        <div class="user-info">
-            <span>Usuário:</span>
-           <strong><?php echo $_SESSION['usuario'] ?? 'david.sousa'; ?></strong>
+        
+        <div class="header-actions">
+            <div class="user-info">
+                <span>Usuário:</span>
+                <strong><?php echo $_SESSION['usuario'] ?? 'david.sousa'; ?></strong>
+            </div>
+
+            <!-- Botão Retornar à Intranet transferido para o cabeçalho -->
+            <a href="index.php" class="btn-header bg-red">
+                <i class="fa-solid fa-house"></i>
+                <span>Retornar Intranet</span>
+            </a>
         </div>
     </header>
 
     <div class="container-tiles">
-        <a href="usuarios.php" class="tile bg-teal">
+        <!-- Nova Aba: Criar Cadastro -->
+        <a href="db/cadastrar.php" class="tile bg-emerald">
+            <i class="fa-solid fa-user-plus"></i>
+            <span>Criar Cadastro</span>
+        </a>
+
+        <a href="db/gerenciar_usuarios.php" class="tile bg-teal">
             <i class="fa-solid fa-user-gear"></i>
             <span>Gerenciar Usuários</span>
         </a>
 
-        <a href="info.php" class="tile bg-blue">
+        <a href="comunicados.php" class="tile bg-blue">
             <i class="fa-solid fa-hand-sparkles"></i>
             <span>Informações</span>
         </a>
@@ -72,12 +88,7 @@ if (!isset($_SESSION['usuario'])) {
 
         <a href="logs.php" class="tile bg-orange">
             <i class="fa-solid fa-clock-rotate-left"></i>
-            <span>Controle de alterações</span>
-        </a>
-
-        <a href="index.php" class="tile bg-red">
-            <i class="fa-solid fa-house"></i>
-            <span>Retornar Intranet</span>
+            <span>Controle de Alterações</span>
         </a>
     </div>
 </body>

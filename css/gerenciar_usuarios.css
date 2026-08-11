@@ -1,0 +1,206 @@
+/* Reset Básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+}
+
+body {
+    background-color: #244b85;
+    color: #ffffff;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header Superior */
+.header-simples {
+    background-color: rgba(0, 0, 0, 0.25);
+    padding: 16px 30px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.user-log-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+    color: #e0e6ed;
+}
+
+/* Container Principal */
+.container-editar {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
+}
+
+.btn-voltar-wrapper {
+    width: 100%;
+    max-width: 900px;
+    margin-bottom: 15px;
+}
+
+.btn-voltar {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    transition: opacity 0.2s;
+}
+
+.btn-voltar:hover {
+    opacity: 0.8;
+}
+
+/* Card Principal */
+.card-secao {
+    background-color: #315896;
+    padding: 35px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    width: 100%;
+    max-width: 900px;
+}
+
+/* Logo */
+.logo-container {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.logo-container img {
+    max-width: 180px;
+    height: auto;
+    border-radius: 8px;
+}
+
+.card-titulo {
+    font-size: 22px;
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #ffffff;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    padding-bottom: 12px;
+}
+
+/* Alertas */
+.alerta {
+    padding: 12px 16px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.alerta-sucesso {
+    background-color: #d1e7dd;
+    color: #0f5132;
+}
+
+.alerta-erro {
+    background-color: #f8d7da;
+    color: #842029;
+}
+
+/* Tabela Estilizada */
+.tabela-container {
+    width: 100%;
+    overflow-x: auto;
+    border-radius: 8px;
+}
+
+.tabela-usuarios {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #ffffff;
+    color: #2d3748;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.tabela-usuarios th {
+    background-color: #1e3a68;
+    color: #ffffff;
+    font-weight: 600;
+    text-align: left;
+    padding: 14px 18px;
+    font-size: 13px;
+    letter-spacing: 0.5px;
+}
+
+.tabela-usuarios td {
+    padding: 14px 18px;
+    border-bottom: 1px solid #e2e8f0;
+    font-size: 14px;
+    vertical-align: middle;
+}
+
+.tabela-usuarios tr:last-child td {
+    border-bottom: none;
+}
+
+.tabela-usuarios tr:hover {
+    background-color: #f7fafc;
+}
+
+/* Badges */
+.badge {
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    display: inline-block;
+}
+
+.badge-admin {
+    background-color: #e53e3e;
+    color: #ffffff;
+}
+
+.badge-usuario {
+    background-color: #319795;
+    color: #ffffff;
+}
+
+/* Botões de Ação */
+.btn-acao {
+    padding: 8px 14px;
+    border-radius: 6px;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: transform 0.1s, opacity 0.2s;
+}
+
+.btn-acao:hover {
+    opacity: 0.9;
+}
+
+.btn-acao:active {
+    transform: scale(0.96);
+}
+
+.btn-editar {
+    background-color: #dd6b20;
+}
+
+.btn-excluir {
+    background-color: #e53e3e;
+    margin-left: 6px;
+}

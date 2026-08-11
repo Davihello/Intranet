@@ -1,26 +1,38 @@
 <?php
 session_start();
-include('db/conexao.php');
 
-// BLOCO DE EXCLUSÃO (Deve vir antes do upload)
-if(isset($_GET['deletar'])) {
+// Importa a conexão via PDO ($pdo)
+require_once 'db/conexao.php';
+
+// BLOCO DE EXCLUSÃO (Com Prepared Statements PDO)
+if (isset($_GET['deletar'])) {
     $id = (int)$_GET['deletar'];
-    $query = mysqli_query($conexao, "SELECT imagem FROM db_sliders WHERE id = $id");
-    $dados = mysqli_fetch_assoc($query);
-    if($dados) {
+
+    // 1. Busca o nome do arquivo para deletar da pasta
+    $stmtSelect = $pdo->prepare("SELECT imagem FROM db_sliders WHERE id = :id LIMIT 1");
+    $stmtSelect->execute([':id' => $id]);
+    $dados = $stmtSelect->fetch();
+
+    if ($dados) {
         $arquivo = "img/sliders/" . $dados['imagem'];
-        if(file_exists($arquivo)) { unlink($arquivo); }
+        if (file_exists($arquivo)) { 
+            unlink($arquivo); 
+        }
     }
-    mysqli_query($conexao, "DELETE FROM db_sliders WHERE id = $id");
+
+    // 2. Remove o registro do banco de dados
+    $stmtDelete = $pdo->prepare("DELETE FROM db_sliders WHERE id = :id");
+    $stmtDelete->execute([':id' => $id]);
+
     header("Location: sliders.php");
     exit();
 }
 
 // BLOCO DE UPLOAD COM REDIMENSIONAMENTO (1080x600)
-if(isset($_FILES['arquivo']) && $_FILES['arquivo']['error'] === 0) {
+if (isset($_FILES['arquivo']) && $_FILES['arquivo']['error'] === 0) {
     $diretorio = "img/sliders/";
     $extensao = strtolower(pathinfo($_FILES['arquivo']['name'], PATHINFO_EXTENSION));
-    $novo_nome = md5(time().rand()) . "." . $extensao;
+    $novo_nome = md5(time() . rand()) . "." . $extensao;
     
     // Cria a imagem de origem baseada no tipo
     if ($extensao == "jpg" || $extensao == "jpeg") {
@@ -30,28 +42,38 @@ if(isset($_FILES['arquivo']) && $_FILES['arquivo']['error'] === 0) {
     }
 
     if (isset($origem)) {
-        // Cria a tela de 1080x600
+        // Cria o canvas de 1080x600
         $destino = imagecreatetruecolor(1080, 600);
         list($l_orig, $a_orig) = getimagesize($_FILES['arquivo']['tmp_name']);
         
+        // Mantém a transparência se for PNG
+        if ($extensao == "png") {
+            imagealphablending($destino, false);
+            imagesavealpha($destino, true);
+        }
+
         // Redimensiona
         imagecopyresampled($destino, $origem, 0, 0, 0, 0, 1080, 600, $l_orig, $a_orig);
         
         // Salva na pasta
-        if ($extensao == "png") imagepng($destino, $diretorio . $novo_nome);
-        else imagejpeg($destino, $diretorio . $novo_nome, 90);
+        if ($extensao == "png") {
+            imagepng($destino, $diretorio . $novo_nome);
+        } else {
+            imagejpeg($destino, $diretorio . $novo_nome, 90);
+        }
 
-        // Grava no banco
-        mysqli_query($conexao, "INSERT INTO db_sliders (imagem) VALUES ('$novo_nome')");
+        // Grava no banco via PDO
+        $stmtInsert = $pdo->prepare("INSERT INTO db_sliders (imagem) VALUES (:imagem)");
+        $stmtInsert->execute([':imagem' => $novo_nome]);
         
         imagedestroy($origem);
         imagedestroy($destino);
+
         header("Location: sliders.php");
         exit();
     }
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -70,7 +92,7 @@ if(isset($_FILES['arquivo']) && $_FILES['arquivo']['error'] === 0) {
 
     <div class="upload-card">
         <form action="" method="POST" enctype="multipart/form-data">
-            <input type="file" name="arquivo" required>
+            <input type="file" name="arquivo" accept="image/jpeg, image/png" required>
             <br>
             <button type="submit" class="btn-save">Salvar Nova Imagem</button>
         </form>
@@ -78,18 +100,23 @@ if(isset($_FILES['arquivo']) && $_FILES['arquivo']['error'] === 0) {
 
     <div class="grid-sliders">
         <?php
-        $busca = mysqli_query($conexao, "SELECT * FROM db_sliders ORDER BY id DESC");
-        while($reg = mysqli_fetch_array($busca)) {
-            echo "
-            <div class='slider-item'>
-                <img src='img/sliders/{$reg['imagem']}'>
-                <div class='actions'>
-                    <span>ID: {$reg['id']}</span>
-                    <a href='?deletar={$reg['id']}' class='btn-del' onclick=\"return confirm('Deseja excluir?')\">
-                        <i class='fa-solid fa-trash-can'></i>
+        // Consulta todos os sliders no PDO e renderiza
+        $stmtBusca = $pdo->query("SELECT * FROM db_sliders ORDER BY id DESC");
+        
+        while ($reg = $stmtBusca->fetch()) {
+            $id = htmlspecialchars($reg['id']);
+            $imagem = htmlspecialchars($reg['imagem']);
+            ?>
+            <div class="slider-item">
+                <img src="img/sliders/<?php echo $imagem; ?>" alt="Slider <?php echo $id; ?>">
+                <div class="actions">
+                    <span>ID: <?php echo $id; ?></span>
+                    <a href="?deletar=<?php echo $id; ?>" class="btn-del" onclick="return confirm('Deseja excluir?')">
+                        <i class="fa-solid fa-trash-can"></i>
                     </a>
                 </div>
-            </div>";
+            </div>
+            <?php
         }
         ?>
     </div>

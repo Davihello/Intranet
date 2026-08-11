@@ -30,7 +30,7 @@ body, html {
 /*================ Estilos para a coluna fixa ========== */
 
 .coluna-fixa {
-  width: 48%;           /* Aumentado para acomodar 4 cards lado a lado */
+  width: 38%;           /* Aumentado para acomodar 4 cards lado a lado */
     min-width: 680px;     /* Largura mínima de segurança para os 4 cards não esmagarem */
     background-color: #3a91dc; 
     padding: 15px 15px; 

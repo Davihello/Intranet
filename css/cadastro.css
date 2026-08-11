@@ -1,0 +1,161 @@
+/* Reset Básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #244b85; /* Azul padrão do seu projeto */
+    color: #ffffff;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Cabeçalho Superior */
+.header-simples {
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 15px 30px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.user-log-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+    color: #e0e6ed;
+}
+
+/* Conteúdo Centralizado */
+.container-editar {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+}
+
+.btn-voltar-wrapper {
+    width: 100%;
+    max-width: 480px;
+    margin-bottom: 15px;
+}
+
+.btn-voltar {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    transition: opacity 0.2s;
+}
+
+.btn-voltar:hover {
+    opacity: 0.8;
+}
+
+/* Card do Formulário */
+.card-secao {
+    background-color: #315896; /* Azul levemente mais claro para o card */
+    padding: 35px;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+    width: 100%;
+    max-width: 480px;
+}
+
+.card-titulo {
+    font-size: 22px;
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #ffffff;
+}
+
+/* Form Groups & Inputs */
+.form-group {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #ffffff;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 12px 16px;
+    border-radius: 8px;
+    border: 1px solid transparent;
+    background-color: #e8f0fe;
+    color: #1a202c;
+    font-size: 15px;
+    outline: none;
+    transition: all 0.2s;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    border-color: #20c997;
+    box-shadow: 0 0 0 3px rgba(32, 201, 151, 0.25);
+}
+
+/* Botão Salvar */
+.btn-salvar {
+    width: 100%;
+    padding: 14px;
+    background-color: #20c997; /* Verde destaque */
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: background-color 0.2s, transform 0.1s;
+    margin-top: 10px;
+}
+
+.btn-salvar:hover {
+    background-color: #1baa80;
+}
+
+.btn-salvar:active {
+    transform: scale(0.98);
+}
+
+/* Alertas */
+.alerta {
+    padding: 12px 16px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.alerta-sucesso {
+    background-color: #d1e7dd;
+    color: #0f5132;
+}
+
+.alerta-erro {
+    background-color: #f8d7da;
+    color: #842029;
+}

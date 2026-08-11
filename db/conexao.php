@@ -1,13 +1,21 @@
 <?php
-$host = "localhost";
-$usuario_db = "root";
-$senha_db = "";
-$nome_db = "db_intranet";
+$host    = 'localhost';
+$db      = 'db_intranet'; // Nome da sua base de dados
+$user    = 'root';        // Usuário do banco
+$pass    = '';            // Senha do banco
+$charset = 'utf8mb4';
 
-$conexao = mysqli_connect($host, $usuario_db, $senha_db, $nome_db);
+$dsn = "mysql:host=$host;dbname=$db;charset=$charset";
+$options = [
+    PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION, // Transforma erros do MySQL em exceções tratáveis
+    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,       // Retorna dados como array associativo por padrão
+    PDO::ATTR_EMULATE_PREPARES   => false,                  // Usa Prepared Statements reais do banco
+];
 
-// Verificação simples para saber se funcionou
-if (!$conexao) {
-    die("Falha na conexão: " . mysqli_connect_error());
+try {
+    // Cria a variável $pdo usada por todo o sistema
+    $pdo = new PDO($dsn, $user, $pass, $options);
+} catch (\PDOException $e) {
+    die("Erro ao conectar com o banco de dados: " . $e->getMessage());
 }
 ?>
