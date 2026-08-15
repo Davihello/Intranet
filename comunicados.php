@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['cadastrar_aviso'])) {
     $stmt = $pdo->prepare("INSERT INTO db_comunicados (titulo, mensagem, ativo) VALUES (:titulo, :mensagem, 1)");
     $stmt->execute([':titulo' => $titulo, ':mensagem' => $mensagem]);
 
-    header("Location: info.php?status=sucesso");
+    header("Location: comunicados.php?status=sucesso");
     exit();
 }
 
@@ -33,7 +33,7 @@ if (isset($_GET['desativar'])) {
     $id = (int)$_GET['desativar'];
     $stmt = $pdo->prepare("UPDATE db_comunicados SET ativo = 0 WHERE id = :id");
     $stmt->execute([':id' => $id]);
-    header("Location: info.php");
+    header("Location: comunicados.php");
     exit();
 }
 
@@ -49,6 +49,7 @@ $avisoAtivo = $stmt->fetch();
     <title>Gerenciar Informações e Avisos - IECPN</title>
     <link rel="stylesheet" href="css/cadastro.css">
     <link rel="stylesheet" href="css/gerenciar_usuarios.css">
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
@@ -81,7 +82,7 @@ $avisoAtivo = $stmt->fetch();
                 </div>
             <?php endif; ?>
 
-            <form action="info.php" method="POST" class="form-padrao">
+            <form action="comunicados.php" method="POST" class="form-padrao">
                 <input type="hidden" name="cadastrar_aviso" value="1">
 
                 <div class="form-group">
@@ -99,17 +100,6 @@ $avisoAtivo = $stmt->fetch();
                 </button>
             </form>
 
-            <?php if ($avisoAtivo): ?>
-                <hr style="margin: 25px 0; border: 0; border-top: 1px solid rgba(255,255,255,0.2);">
-                <div style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 8px;">
-                    <h3 style="font-size: 16px; margin-bottom: 8px;"><i class="fa-solid fa-eye"></i> Comunicado Ativo no Momento:</h3>
-                    <p><strong><?php echo htmlspecialchars($avisoAtivo['titulo']); ?></strong></p>
-                    <p style="font-size: 13px; margin-top: 5px; opacity: 0.9;"><?php echo nl2br(htmlspecialchars($avisoAtivo['mensagem'])); ?></p>
-                    <a href="info.php?desativar=<?php echo $avisoAtivo['id']; ?>" class="btn-acao btn-excluir" style="margin-top: 12px; text-decoration: none;">
-                        <i class="fa-solid fa-ban"></i> Desativar este Comunicado
-                    </a>
-                </div>
-            <?php endif; ?>
         </div>
     </main>
 </body>

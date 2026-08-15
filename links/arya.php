@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Intranet - IECPN</title>
     <link rel="stylesheet" href="../css/arya.css">
-    <link rel="icon" type="image/png" href="../img/icone-pequeno-cerebro.png">
+    <link rel="icon" type="image/png" href="../img/img-cerebro.png">
 </head>
 <body>
     <div class="container-principal">
@@ -23,16 +23,17 @@
 
   <main>
     <!-- Cabeçalho estatico Principal -->
-    <section class="welcome" >
-      <h1>Seja Bem-Vindo A<br>Nossa Intranet</h1>
-      <p>Qualidade, Humanização, Profissionalismo, Fidelização e Ética!</p>
-    </section>
-    <div class="logo-central">
-        <img src="../img/bg-cerebro.png" alt="Logo IECérebro" class="img-logo"/>
-    </div>  
-    <!-- Atalhos  -->
+     <div class="logo-central">
+             <img src="../img/bg-cerebro.png" alt="Logo IECérebro" class="img-logo"/>
+      </div>
+      <section class="welcome">
+              <h1>FUNDAÇÃO DO CÉREBRO<br>PAULO NIEMEYER</h1>
+              <p>Centro de Estudos e Pesquisas em Neurociências</p>
+      </section>
+      
+    <!-- ATALHOS -->
     <section class="atalhos">
-
+      <br><br>
       <h3>Atalhos mais utilizados</h3>
       
       <div class="cards">
@@ -79,7 +80,7 @@
           </div>
         </a>
 
-        <a href="elogios.html" target="_blank">
+        <a href="elogios.html">
           <div class="card">
           <div class="icon"><img src="../img/feedback.png" alt="central" class="img-telefone"></div>
           <span>Elogios</span>
@@ -101,12 +102,12 @@
 
         <div class="coluna-rolavel">              
           
-            <section class="acessos" id="acessos">
-                <div class="acessos-paragrafo">
-                  <h1>Acesso ao Visualizador de Imagens Pixeon Arya</h1>
-                  <br>
-                  <p><img src="../img/Logo-Pixeon.png" alt="Pixeon - PACS Aurora" height="90px" width="120px"></p>
-                </div>
+        <section class="acessos" id="acessos">
+          <div class="acessos-paragrafo">
+              <h1>Acesso ao Visualizador de Imagens Pixeon Arya</h1>   
+              <p><img src="../img/Logo-Pixeon.png" alt="Pixeon - PACS Aurora" class="logo-pixeon"></p>
+          </div>
+                  </section>
                 <!-- Sessão de Icones  -->
                       <div class="quadrante-container">
                 <div class="logos-cerebro-bg">

@@ -123,7 +123,7 @@ header {
     font-size: 1.2rem;
 }
 
-/* Seção de Atalhos */
+/* ======== Configuração da seção dos atalhos =========*/
 .atalhos {
     margin-top: 10px;
     margin-bottom: 10px;
@@ -164,6 +164,15 @@ section a {
     box-shadow: none;
     margin: 0;
     border-radius: 0;
+}
+
+/* Consulta de mídia para dispositivos móveis (telas menores que 768px) */
+@media (max-width: 768px) {
+    .logo-central {
+        max-width: 90%;             /* Usa 90% da largura da tela no celular */
+        margin: 10px auto;           /* Menos margem no celular */
+        border-radius: 10px;         /* Bordas um pouco menos arredondadas */
+    }
 }
 
 /* Cards de Atalho */
@@ -232,9 +241,9 @@ section a {
 /* Carrossel */
 .carousel {
     position: relative;
-    width: 95%;
+    width: 88%;
     max-width: 1080px;
-    height: 500px;
+    height: 550px;
     margin: 0 auto 30px;
     overflow: hidden;
     border-radius: 20px;
@@ -268,8 +277,8 @@ section a {
     height: 50px;
 }
 
-.prev { left: 20px; }
-.next { right: 20px; }
+.prev { left: 0px; }
+.next { right: 0px; }
 
 .prev:hover, .next:hover {
     background-color: rgba(44, 94, 140, 0.9);
@@ -295,7 +304,8 @@ section a {
 .slide img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
+    background-color: #f0f0f0;
 }
 
 /* Seção Acessos / MV */
@@ -446,10 +456,16 @@ section a {
     margin-top: 30px;
 }
 
+final img {
+  margin-left: 15px;
+}
+
+
 .final h3 {
     font-size: 14px;
     color: #444;
 }
+
 
 /* Responsivo */
 @media (max-width: 768px) {

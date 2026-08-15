@@ -27,13 +27,13 @@ body, html {
 
 }
 
-/*================ Estilos para a coluna fixa ========== */
+/*================ Estilos para a coluna fixa ================ */
 
 .coluna-fixa {
-  width: 38%;           /* Aumentado para acomodar 4 cards lado a lado */
-    min-width: 680px;     /* Largura mínima de segurança para os 4 cards não esmagarem */
+    width: 38%;
+    min-width: 680px;
     background-color: #3a91dc; 
-    padding: 15px 15px; 
+    padding: 15px; 
     box-sizing: border-box; 
     height: 100vh; 
     display: flex;
@@ -41,8 +41,28 @@ body, html {
     align-items: center;
     text-align: center;
     overflow-y: hidden; 
+    position: relative;
+    z-index: 0;
 }
 
+.coluna-fixa::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url('../img/bg-medico-cerebro.png');
+    background-size: cover;
+    background-position: center 30%;
+    background-repeat: no-repeat;
+    opacity: 0.30;
+    z-index: -1;
+    pointer-events: none;
+}
+
+.coluna-fixa > header,
+.coluna-fixa > main {
+    position: relative;
+    z-index: 1;
+}
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
 
 
@@ -118,23 +138,23 @@ header {
 }
 
 
-/* Titulo principal */
+/* ========== Título e Textos Esquerda ========== */
 
 .welcome h1 {
-  font-size: 2.0em;
-  margin-top: 30px;
-  line-height: 1.4;
+    font-size: 2.0rem;
+    margin-top: 30px;
+    line-height: 1.4;
+    color: #ffffff;
 }
 .welcome p {
-  color: #d9f0ff;
-  font-weight: 30;
-  margin-top: 10px;
-  font-size: 1,5rem;
+    color: #d9f0ff;
+    margin-top: 15px;
+    font-size: 1.3rem;
 }
 
 /* Configuração da seção dos atalhos */
 .atalhos {
-   margin-top: 10px;
+   margin-top: 30px;
     margin-bottom: 10px;
     width: 100%;
     padding: 0;
@@ -272,11 +292,15 @@ section a {
 
 .coluna-rolavel {
     width: 65%; 
-    overflow-y: auto; 
+    height: 100vh;
     background-color: white;
-    overflow-y: scroll;
     color: #000;
-    height: 100%;
+    padding: 10px 0 0 0; /* Reduzido o padding superior */
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Distribui o conteúdo e fixa o rodapé no final */
+    overflow-y: hidden; /* Remove a barra de rolagem */
 }
 
 * {
@@ -291,102 +315,6 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
-}
-/*  ================ Sliders =================== */
-.carousel {
-    position: relative;
-    width: 100%;
-    max-width: 1080px; /* ajuste de 1080x600 */
-    height: 600px;
-    margin: 0 auto;
-    overflow: hidden;
-    border-radius: 30px; /* Deixa as quinas arredondadas */
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); 
-    border: 2px solid rgba(255, 255, 255, 0.1);
-}
-.carousel-inner {
-    display: flex;
-    width: 100%;
-    height: 100%;
-}
-
-
-.carousel-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(0, 0, 0, 0.3); /* Fundo escuro  */
-    color: white;
-    border: none;
-    padding: 15px 20px;
-    cursor: pointer;
-    font-size: 24px;
-    border-radius: 50%;
-    z-index: 10;
-    transition: 0.3s;
-}
-
-.carousel-btn:hover {
-    background: #b5ced6; /* azul claro */
-    color: #2c5e8c;      /* azul escuro */
-}
-
-.prev, .next {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: rgba(0, 0, 0, 0.4); /* Fundo escuro transparente */
-    color: white;
-    font-size: 24px;
-    padding: 16px;
-    border: none;
-    cursor: pointer;
-    border-radius: 50%;
-    z-index: 100; /* Garante que fique acima das imagens */
-    transition: 0.3s;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 50px;
-    height: 50px;
-}
-
-.prev {
-    left: 20px;   /* Encosta na esquerda com 20px de respiro */
-}
-
-.next {
-    right: 20px;  /* Encosta na direita com 20px de respiro */
-}
-
-/* Efeito ao passar o mouse */
-.prev:hover, .next:hover {
-    background-color: rgba(44, 94, 140, 0.9); 
-    transform: translateY(-50%) scale(1.1);
-}
-
-/* ============ Slides ============= */
-.slide {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0; /* Começa invisível */
-    transition: opacity 1.2s ease-in-out; /* Transição suave e lenta */
-    z-index: 0;
-}
-
-/*============ Slide Ativo =============== */
-.slide.active {
-    opacity: 1; /* Visível */
-    z-index: 1;
-}
-
-.slide img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Mantém a proporção sem esticar */
 }
 
 
@@ -428,13 +356,27 @@ body {
 }
 
 /* Sessão logos e acessos Arya  */
-.acessos{
-  height:auto ;
-  padding-top: 100px;
-  margin-bottom: auto;
+.acessos {
+  height: auto;
+  padding-top: 10px !important;  
+  margin-top: 0 !important;      
+  margin-bottom: 10px;
 }
-.acessos-paragrafo {
-    margin-bottom: 25px;
+
+.acessos-paragrafo h1 {
+  font-size: 1.5rem;             
+  margin-bottom: 5px !important;
+  margin-top: 0 !important;
+}
+
+.acessos-paragrafo p {
+  margin: 0 !important;         
+}
+
+.logo-pixeon {
+  height: 70px !important;       
+  width:auto !important;        
+  margin-bottom: 20px;
 }
 
 .img-logo {
@@ -488,29 +430,18 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-
     /* Espaçamento e Bordas */
-
     border-radius:50px;
-    /* Aumente o padding interno para deixar o botão "gordinho" */
-    padding: 18px 30px; /* Cima/Baixo e Direita/Esquerda */
-    
-    /* --- ALINHAMENTO E FUNDO --- */
-    background-color: #d9f0ff; /* Mantendo a sua cor */
-    
+    padding: 18px 30px;
     /* Garante que o contêiner azul fique centralizado na tela */
-    margin: 15px auto; /* Margin-bottom de 15px e centralizado horizontalmente */
-
+    margin: 15px auto;
     box-decoration-break: 0 2px 6px rgba(0,0,0,);
-
-
 }
 /* Faz o link ocupar o quadrado inteiro para ser clicável em qualquer lugar */
 .logos-cerebro-bg a {
     text-decoration: none; /* Remove o sublinhado */
     color: #0056a0; /* Um azul mais escuro e sóbrio para o texto */
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Fonte moderna */
-    
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Fonte moderna */    
     width: 100%; /* O link preenche o botão todo para ser clicável */
     display: block; /* Garante o preenchimento total */
 }
@@ -535,42 +466,14 @@ body {
 }
 
 
-
-
-/* Sessão Ramal e Email  */
-.ramal-email{
-  height: 350px;
-}
-
-.logos-ramal-email{
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  margin: 25px;
-}
-
-.logos-ramal-email-bg{
-    background-color: #d9f0ff;
-    border-radius: 20px;
-    margin: 5px 10px;
-    padding: 10px;
-    transition: 0.2s;
-}
-.logos-ramal-email-bg:hover{
-    transform: translateY(-5px);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-}
-
-
-
-/* Footer  */
+/* ========== Rodapé ========== */
 .final {
-  display: flex;
-  flex-direction: row;
-  height: auto;
-  background-color: #EDEDED;
-  padding: 50px;
-  
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background-color: #EDEDED;
+    padding: 30px;
+    margin-top: 30px;
 }
 
 .final img {
@@ -578,6 +481,6 @@ body {
 }
 
 .final h3 {
-  margin-top: 50px;
-  margin-left: 10%;
+    font-size: 14px;
+    color: #444;
 }

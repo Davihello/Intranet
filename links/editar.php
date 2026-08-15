@@ -87,7 +87,7 @@ $extensaoAtual = $cardapioAtual ? strtolower(pathinfo($cardapioAtual, PATHINFO_E
     <link rel="icon" type="image/png" href="img/icone-pequeno-cerebro.png">
     <link rel="stylesheet" href="css/painel.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="../css/editarpagina.css">
+    <link rel="stylesheet" href="../css/editar_pagina.css">
 </head>
 <body>
 

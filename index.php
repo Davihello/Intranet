@@ -1,14 +1,20 @@
 <?php
-// 1. Conexão com o banco de dados (deve ficar no topo)
+// 1. Conexão com o banco de dados
 include('db/conexao.php');
 
-// 2. Busca o comunicado ativo para o Pop-up
+// 2.  Busca o comunicado ativo no banco de dados
 $comunicadoAtivo = null;
 if (isset($pdo)) {
     $stmtAviso = $pdo->query("SELECT * FROM db_comunicados WHERE ativo = 1 ORDER BY id DESC LIMIT 1");
     if ($stmtAviso) {
         $comunicadoAtivo = $stmtAviso->fetch();
     }
+}
+
+// 3. Verifica se o aviso já foi fechado nesta sessão
+$avisoLido = false;
+if ($comunicadoAtivo && isset($_SESSION['comunicado_lido_' . $comunicadoAtivo['id']])) {
+    $avisoLido = true;
 }
 ?>
 <!DOCTYPE html>
@@ -18,31 +24,49 @@ if (isset($pdo)) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Intranet - IECPN</title>
     <link rel="stylesheet" href="css/index.css?=1.1">
-    <link rel="icon" type="image/png" href="img/img-cerebro.png" sizes="64x64px">
+    <link rel="icon" type="image/png" href="img/img-cerebro.png">
     <link rel="stylesheet" href="css/contraCheque.css">   
     <link rel="stylesheet" href="css/comunicado.css">
+    <link rel="stylesheet" href="css/popup.css">
     <link rel="stylesheet" href="css/cardapio.css"> 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
+    
     <!-- MODAL POP-UP DE COMUNICADO ATIVO -->
-    <?php if ($comunicadoAtivo): ?>
-    <div id="modalAviso" class="modal-aviso-overlay">
-        <div class="modal-aviso-card">
-            <div class="modal-aviso-header">
-                <i class="fa-solid fa-circle-exclamation"></i>
-                <h2><?php echo htmlspecialchars($comunicadoAtivo['titulo']); ?></h2>
+        
+        <?php if ($comunicadoAtivo && !$avisoLido): ?>
+            <div class="popup-overlay" id="popupNotificacao">
+                <div class="popup-wrapper">
+                    <div class="popup-mascote">
+                        <img src="img/doutor-cerebro.png" alt="Doutor Cérebro">
+                    </div>
+
+                    <div class="popup-card balao-dialogo">
+                        <div class="balao-seta"></div>
+                        
+                        <div class="popup-conteudo">
+                            <div class="popup-icone">
+                                <i class="fa-solid fa-circle-exclamation"></i>
+                            </div>
+                
+                            <h2 class="popup-titulo">
+                                <?php echo htmlspecialchars($comunicadoAtivo['titulo']); ?>
+                            </h2>
+                
+                            <p class="popup-mensagem">
+                                <?php echo nl2br(htmlspecialchars($comunicadoAtivo['mensagem'])); ?>
+                            </p>
+                            
+                            <button type="button" class="btn-ciente" onclick="fecharEGravarCookie(<?php echo $comunicadoAtivo['id']; ?>)">
+                                Entendi
+                            </button>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="modal-aviso-body">
-                <p><?php echo nl2br(htmlspecialchars($comunicadoAtivo['mensagem'])); ?></p>
-            </div>
-            <div class="modal-aviso-footer">
-                <button onclick="fecharModalAviso()" class="btn-fechar-aviso">Entendi / Ciente</button>
-            </div>
-        </div>
-    </div>
-    <?php endif; ?>
+        <?php endif; ?>
 
     <div class="container-principal">
         <div class="coluna-fixa">
@@ -60,7 +84,6 @@ if (isset($pdo)) {
                 <div class="logo-central">
                     <img src="img/bg-cerebro.png" alt="Logo IECérebro" class="img-logo"/>
                 </div>
-
                 <section class="welcome">
                   <h1>FUNDAÇÃO DO CÉREBRO<br>PAULO NIEMEYER</h1>
                   <p>Centro de Estudos e Pesquisas em Neurociências</p>
@@ -113,7 +136,7 @@ if (isset($pdo)) {
                           </div>
                       </a>
 
-                      <a href="./links/elogios.html" target="_blank">
+                      <a href="./links/elogios.html">
                           <div class="card">
                             <div class="icon"><img src="img/feedback.png" alt="central" class="img-telefone"></div>
                             <span>Elogios</span>
@@ -236,12 +259,17 @@ if (isset($pdo)) {
     <script src="js/scrollsuave.js"></script>
     <script src="js/cardapio.js"></script>
     <script>
-        function fecharModalAviso() { 
-            var modal = document.getElementById('modalAviso');
-            if (modal) {
-                modal.style.display = 'none'; 
+        function fecharEGravarCookie(comunicadoId) {
+            // Registra na sessão via requisição rápida
+            fetch('fechar_aviso.php?id=' + comunicadoId);
+
+            // Esconde o modal
+            const popup = document.getElementById("popupNotificacao");
+            if (popup) {
+                popup.style.display = "none";
             }
-        } 
+        }
+    </script>
     </script>
 </body>
 </html>

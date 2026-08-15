@@ -22,7 +22,7 @@ function resetTimer() {
     clearInterval(slideInterval);
     slideInterval = setInterval(() => {
         changeSlide(1);
-    }, 5000); // Troca a cada 5 segundos
+    }, 6000); // Troca a cada 6 segundos
 }
 
 // Inicializa apenas quando o HTML estiver pronto

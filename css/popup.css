@@ -1,0 +1,115 @@
+/* Container de fundo com opacidade levemente clareada */
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.45);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+}
+
+/* Agrupador do Mascote + Balão */
+.popup-wrapper {
+    display: flex;
+    align-items: center;
+    max-width: 750px;
+    width: 90%;
+    position: relative;
+}
+
+/* Lado Esquerdo: Mascote */
+.popup-mascote {
+    width: 180px;
+    flex-shrink: 0;
+    z-index: 2;
+    margin-right: -15px; /* Sobrepõe levemente o balão */
+}
+
+.popup-mascote img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Balão de Diálogo Clareado */
+.popup-card.balao-dialogo {
+    background: #ffffff; /* Fundo branco bem claro */
+    border-radius: 20px;
+    padding: 30px;
+    flex: 1;
+    position: relative;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+    border: 1px solid #e2e8f0;
+}
+
+/* Setinha/Ponta do Balão apontando para o Doutor Cérebro */
+.balao-seta {
+    position: absolute;
+    left: -14px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 0;
+    height: 0;
+    border-top: 14px solid transparent;
+    border-bottom: 14px solid transparent;
+    border-right: 14px solid #ffffff; /* Mesma cor de fundo do balão */
+}
+
+/* Elementos Internos */
+.popup-icone {
+    color: #2563eb;
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+
+.popup-titulo {
+    color: #1e293b;
+    font-size: 24px;
+    font-weight: 700;
+    margin: 0 0 10px 0;
+}
+
+.popup-mensagem {
+    color: #475569;
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+.btn-ciente {
+    background-color: #10b981;
+    color: #ffffff;
+    border: none;
+    padding: 12px 28px;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.1s ease;
+}
+
+.btn-ciente:hover {
+    background-color: #059669;
+    transform: translateY(-1px);
+}
+
+/* Ajuste Responsivo */
+@media (max-width: 650px) {
+    .popup-wrapper {
+        flex-direction: column;
+        align-items: center;
+    }
+    .popup-mascote {
+        margin-right: 0;
+        margin-bottom: -20px;
+        width: 140px;
+    }
+    .balao-seta {
+        display: none; /* Esconde a seta em telas mobile */
+    }
+}
